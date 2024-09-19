@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotoGP</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/riders.css">
+    <link rel="stylesheet" href="../css/results.css">
+
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="sub-header"></div>
+
+    <div class="result">
+        <div class="results__container">
+            <div class="primary-filter">
+                <div class="primary-filter__filter-container">
+                    <div class="primary-filter__filter-label">Year</div>
+                    <select class="primary-filter__filter-select primary-filter__filter-select--year">
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+                </div>
+            <div class="primary-filter__filter-container">
+                <div class="primary-filter__filter-label">Type</div>
+                <select class="primary-filter__filter-select primary-filter__filter-select--type">
+                    <option value="GP">Grands Prix</option>
+                    <option value="ALL">All Events</option>
+                </select></div><div class="primary-filter__filter-container">
+                <div class="primary-filter__filter-label">Event</div>
+                <select class="primary-filter__filter-select primary-filter__filter-select--event">
+                    <option  name="EMI" value="emi">GRAN PREMIO DELL'EMILIA-ROMAGNA</option>
+                    <option   name="RSM"  value="rsm">GRAN PREMIO DI SAN MARINO E DELLA RIVIERA DI RIMINI</option>
+                    <option   name="ARA"  value="ara">GRAN PREMIO DE ARAGÓN</option>
+                    <option   name="AUT"  value="aut">MOTORRAD GRAND PRIX VON ÖSTERREICH</option>
+                    <option   name="GBR"  value="gbr">BRITISH GRAND PRIX</option>
+                    <option   name="GER"  value="ger">MOTORRAD GRAND PRIX DEUTSCHLAND</option>
+                    <option   name="NED"  value="ned">TT ASSEN</option>
+                    <option   name="ITA"  value="ita">GRAN PREMIO D'ITALIA</option>
+                    <option   name="CAT"  value="cat">GRAN PREMI DE CATALUNYA</option>
+                    <option   name="FRA"  value="fra">GRAND PRIX DE FRANCE</option>
+                    <option   name="SPA"  value="spa">GRAN PREMIO DE ESPAÑA</option>
+                </select>
+            </div>
+            <div class="primary-filter__filter-container">
+                <div class="primary-filter__filter-label">Category</div>
+                <select class="primary-filter__filter-select primary-filter__filter-select--cat">
+                    <option  data-category-id="3" value="motogp">MotoGP™</option>
+                    <option  data-category-id="2" value="moto2">Moto2™</option>
+                    <option  data-category-id="1" value="moto3">Moto3™</option>
+                    <option  data-category-id="19" value="motoe">MotoE™</option>
+                </select></div><div class="primary-filter__filter-container">
+                <div class="primary-filter__filter-label">Session</div>
+                <select class="primary-filter__filter-select primary-filter__filter-select--cat">
+                    <option  value="rac">RAC</option>
+                    <option  value="wup">WUP</option>
+                    <option  value="spr">SPR</option>
+                    <option  value="q2">Q2</option>
+                    <option  value="q1">Q1</option>
+                    <option  value="fp2">FP2</option>
+                    <option  value="pr">PR</option>
+                    <option  value="fp1">FP1</option>
+                </select>
+            </div>
+        </div>
+        <div class="results__hero-container">
+            <div class="results__hero-image">
+                <img alt="Gran Premio Red Bull di San Marino e della Riviera di Rimini" src="https://photos.motogp.com/2024/events/background/RSM.png" class="results__hero-image-img js-hero-image active">
+            </div>
+            <div class="results__hero-text">Gran Premio Red Bull di San Marino e della Riviera di Rimini 2024</div>
+            <div class="results__hero-details-container"><img src="https://static-files.motogp.pulselive.com/assets/flags/sm.svg" alt="SM flag" class="results__hero-details-flag">
+                <div class="results__hero-details-location">Misano World Circuit Marco Simoncelli</div>
+                <div class="results__hero-details-dates">6 - 09 Sep</div>
+            </div>
+        </div>
+    
+        <section class="results-table">
+            <div class="results-table__weather">
+                <div class="results-table__weather-column">
+                    <svg aria-hidden="true" role="img" class="icon results-table__weather-icon">
+                        <use xmlnsXlink="http://www.w3.org/1999/xlink" href="/resources/v7.7.1/i/svg-output/icons.svg#icn-lightrain">
+
+                        </use>
+                    </svg>
+                </div>
+                <div class="results-table__weather-column">
+                    <span class="results-table__weather-header results-table__weather-header--cell">Light Rain</span>
+                    <span class="results-table__weather-cell">30º</span>
+                </div>
+                <div class="results-table__weather-column">
+                    <span class="results-table__weather-header">Track conditions</span>
+                    <span class="results-table__weather-cell">Dry</span>
+                </div>
+                <div class="results-table__weather-column">
+                    <span class="results-table__weather-header">Humidity</span>
+                    <span class="results-table__weather-cell">51%</span>
+                </div>
+                <div class="results-table__weather-column">
+                    <span class="results-table__weather-header">Ground</span>
+                    <span class="results-table__weather-cell">30º</span>
+                </div>
+            </div>
+            <div class="results-table__table-wrapper">
+                <table class="results-table__table">
+                    <thead>
+                        <tr>
+                            <th class="results-table__header-cell results-table__header-cell--pos-points u-show-tablet ">
+                                <span class="results-table__header-cell--pos">pos.</span>
+                                <span class="results-table__header-cell--points">pts</span>
+                            </th>
+                            <th class="results-table__header-cell results-table__header-cell--pos u-hide-tablet">pos.</th>
+                            <th class="results-table__header-cell results-table__header-cell--points u-hide-tablet">pts</th>
+                            <th class="results-table__header-cell results-table__header-cell--rider">rider
+                                <span class="results-table__header-cell results-table__header-cell--team u-show-tablet">Team</span>
+                            </th>
+                            <th class="results-table__header-cell results-table__header-cell--team u-hide-tablet">Team</th>
+                            <th class="results-table__header-cell results-table__header-cell--time">time / gap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="results-table__body-row">
+                            <td class="results-table__body-cell results-table__body-cell--pos-points u-show-tablet" style="border-left: 4px solid rgb(157, 180, 217);">
+                                <span class="results-table__body-cell--pos">1</span>
+                                <span class="results-table__body-cell--points">25</span>
+                            </td>
+                            <td class="results-table__body-cell results-table__body-cell--pos u-hide-tablet" style="border-left: 4px solid rgb(157, 180, 217);">1</td>
+                            <td class="results-table__body-cell results-table__body-cell--points u-hide-tablet">25</td>
+                            <td class="results-table__body-cell results-table__body-cell--rider">
+                                <div class="results-table__rider-details">
+                                    <div class="rider-image-container">
+                                        <div class="rider-image">
+                                            <div class="js-lazy-load u-observed lazy-image-wrapper " >
+                                                <img src="https://resources.motogp.pulselive.com/photo-resources/2024/02/19/986b0e12-1db0-49d8-ae13-fd556286237a/93_Marc_MarquezFullbodyGresini.png?height=300&amp;width=200" alt="rider-bio_marcmarquez" loading="lazy" class="img undefined picture__img ">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="results-table__rider-name-wrapper u-hide-tablet">
+                                        <div class="results-table__rider-name">
+                                            <span class="results-table__body-cell results-table__body-cell--number">93</span>
+                                            <span class="results-table__body-cell results-table__body-cell--full-name">
+                                                <a href="/en/riders/marc-marquez/23e50438-a657-4fb0-a190-3262b5472f29" title="label.standings.viewRiderProfile" class="results-table__rider-link">
+                                                    <span class="results-table__first-name">M. </span> 
+                                                    Marquez
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <img src="https://static-files.motogp.pulselive.com/assets/flags/es.svg" alt="ES flag" class="results-table__body-cell-flag">
+                                    </div>
+                                    <div class="results-table__rider-name-wrapper u-show-tablet">
+                                        <div class="results-table__rider-name">
+                                            <span class="results-table__body-cell results-table__body-cell--number">93</span>
+                                            <span class="results-table__body-cell results-table__body-cell--full-name">
+                                                <a href="/en/riders/marc-marquez/23e50438-a657-4fb0-a190-3262b5472f29" title="label.standings.viewRiderProfile" class="results-table__rider-link">
+                                                    <span class="results-table__first-name">M. </span> Marquez</a></span>
+                                                    <img src="https://static-files.motogp.pulselive.com/assets/flags/es.svg" alt="ES flag" class="results-table__body-cell-flag">
+                                                </div>
+                                                <span class="results-table__body-cell--team">Gresini Racing MotoGP</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                            <td class="results-table__body-cell results-table__body-cell--team u-hide-tablet">Gresini Racing MotoGP</td>
+                            <td class="results-table__body-cell results-table__body-cell--time"><span>41:52.083</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    
+    
+    </div>
+
+    <script src="../component/header.js"></script>
+    <script src="../component/resultHeader.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,415 @@
+
+/* rider header */
+.rider-header {
+    display: flex;
+    flex-flow: row nowrap;
+    position: relative;
+    width: 100%;
+    background: #000;
+    background-image: radial-gradient(96.8% 493.26% at 100% 93.41%, rgba(255, 4, 0, 0.23) 0, rgba(148, 4, 1, 0) 100%);
+}
+
+.rider-header__header .page-header {
+    background: transparent;
+    background-image: none;
+}
+
+.page-header__container {
+    color: #fff;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 0 6.6rem 1rem;
+    position: relative;
+    font-size: 1.2rem;
+}
+
+/* nav */
+.tabs-header {
+    background: #000;
+    z-index: 200;
+    position: relative;
+}
+
+.tabs {
+    flex-flow: column nowrap;
+    background: #000 radial-gradient(96.8% 493.26% at 100% 93.41%, rgba(255, 4, 0, 0.23) 0, rgba(148, 4, 1, 0) 100%);
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 10;
+    position: relative;
+}
+
+.widget-outer-spacing {
+    padding-left: 4.8rem;
+    padding-right: 4.8rem;
+}
+
+.tabs__list--center {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    overflow-x: auto;
+    overflow-y: hidden;
+    justify-content: flex-start;
+}
+
+.tabs__list {
+    display: flex;
+    overflow-x: auto;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    margin: 0;
+    gap: 1.2rem;
+}
+
+.tabs__link {
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    padding: 1rem 0;
+    min-width: 5rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* rider-grid */
+.rider-grid__container {
+    padding: 2.4rem 6.6rem;
+    background-color: #fcfcfc;
+}
+
+/* menu */
+.rider-grid__menu-container {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: .8rem;
+}
+
+.rider-grid__menu-item.active {
+    background-color: #c80502;
+    color: #fff;
+    border: none;
+}
+
+.rider-grid__menu-item {
+    font-size: 1rem;
+    line-height: 1.6rem;
+    color: #000;
+    padding: 0.6rem 1rem;
+    border-radius: 1.8rem;
+    border: .1rem solid #ebebeb !important;
+}
+
+/* grid */
+
+.rider-list__container {
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr ; 
+    padding: 2.4rem 0;
+    gap: .8rem;
+}
+
+.rider-grid__title {
+
+    font-size: 2.4rem;
+    line-height: 2.7rem;
+    letter-spacing: -.02em;
+    color: #000;
+    display: flex;
+    align-items: baseline;
+    gap: .4rem;
+    margin-bottom: 1.6rem;
+    width: 100%;
+    text-transform: capitalize;
+}
+
+.rider-grid__title:before {
+    display: flex;
+    position: relative;
+    content: "";
+    background-image: url("https://www.motogp.com/resources/v7.7.1/i/svg-files/elements/widget-header.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 1.3rem;
+    height: 1.6rem;
+}
+
+.rider-list__rider {
+    position: relative;
+    display: flex;
+    border-radius: .4rem;
+    background-color: #171c21;
+    justify-content: space-between;
+    text-decoration: none;
+    overflow: hidden;
+    height: 30rem;
+
+}
+
+.rider-list__background, .rider-list__background-team-colour {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: .4rem;
+}
+
+.rider-list__background-team-colour {
+    left: 0;
+    top: 0;
+    transition: background-color .5s ease-in-out;
+    opacity: .32;
+    background-color: rgb(204, 0, 0);
+}
+
+.rider-list__background-name {
+    font-size: 14.4rem;
+    font-style: italic;
+    line-height: 0;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    white-space: nowrap;
+    position: absolute;
+    left: 20%;
+    top: 40%;
+    transform: translate(-20%, -40%);
+    opacity: .24;
+
+    left: 50%;
+    transform: translate(-50%, -40%);
+}
+
+.rider-list__background-gradient {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.rider-list__background-gradient:before {
+    background: linear-gradient(270deg, transparent, #171c21 112%);
+}
+
+.rider-list__background-gradient:after, .rider-list__background-gradient:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    border-radius: .4rem;
+    z-index: 1;
+}
+
+.rider-list__background-gradient:after {
+    background: linear-gradient(180deg, rgba(23, 28, 33, 0), #171c21);
+}
+
+.rider-list__background-hashtag {
+    font-size: 2rem;
+    line-height: 2.4rem;
+    color: #ededed;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    padding: 0 1.6rem 1.6rem 0;
+}
+
+.rider-list__image-container {
+    display: flex;
+    order: 3;
+    z-index: 1;
+    justify-content: flex-end;
+    position: absolute;
+    top: .8rem;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 14.2rem;
+    overflow: hidden;
+    max-width: 14rem;
+    margin-right: 0;
+    height: 35.2rem;
+
+        position: absolute;
+        top: 3.2rem;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 70rem;
+        max-height: 38.8rem;
+        overflow: hidden;
+        width: 100%;
+}
+
+.rider-list__image {
+    width: 100%;
+}
+
+.rider-list__image-container:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 8rem;
+    background: linear-gradient(180deg, rgba(23, 28, 33, 0) 20%, #171c21 90%);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.rider-list__info-container {
+    width: 60%;
+    padding: 1.6rem;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    border-radius: .4rem;
+    position: relative;
+    z-index: 1;
+    min-height: 14.2rem;
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    justify-content: flex-end;
+    padding: 1.6rem 1.6rem 2.4rem;
+}
+
+.rider-list__info-container:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 20rem;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(23, 28, 33, 0), #171c21 80%);
+    border-radius: .4rem;
+}
+
+.rider-list__info-hashtag {
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    color: #fff;
+    z-index: 1;
+    display: block;
+    margin-bottom: .4rem;
+}
+
+.rider-list__info-name {
+    font-size: 1.8rem;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 2.2rem;
+    display: flex;
+    flex-flow: column;
+    z-index: 10;
+}
+
+.rider-list__details-container {
+    display: flex;
+    flex-flow: row;
+    gap: .8rem;
+    height: -moz-fit-content;
+    height: fit-content;
+    align-items: stretch;
+}
+
+.rider-list__details-country, .rider-list__details-team {
+    font-size: 1rem;
+    line-height: 1.4rem;
+    color: #fff;
+    opacity: .8;
+    display: flex;
+    align-items: center;
+}
+
+.rider-list__details-country, .rider-list__details-team {
+    font-size: 1rem;
+    max-width: none;
+}
+
+.rider-list__details-team {
+    gap: .8rem;
+    min-width: 50%;
+}
+
+.rider-list__details-team:before {
+    content: "";
+    display: block;
+    width: .05rem;
+    height: 100%;
+    background-color: #585e65;
+    opacity: .8;
+    pointer-events: none;
+}
+
+.rider-list__details-years-active {
+    display: none;
+}
+
+.rider-list__image-container img {
+    object-position: top;
+}
+
+.rider-image img {
+    width: 100%;
+}
+
+.picture__img {
+    max-width: 100%;
+}
+
+.object-fit-cover-picture__img, .object-fit-cover-video__iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: center;
+    font-family: "object-fit: cover; object-position: center";
+}
+
+.rider-list__career-type {
+    margin-top: 3.2rem;
+    grid-column: 1 / -1;
+}
+
+
+
+@media (min-width: 40em) {
+    .rider-list__container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 52.5em) {
+    .rider-list__container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 64.0625em) {
+    .rider-list__container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.rider-list__flag-container {
+    width: 1.6rem;
+    height: 1rem;
+    border-radius: .4rem;
+    margin-right: .5rem;
+    flex-shrink: 0;
+}

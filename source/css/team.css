@@ -1,0 +1,335 @@
+
+.teams-grid__container {
+    padding: 2.4rem 1.6rem;
+    background-color: #f9f9f9;
+}
+
+@media (min-width: 52.5em) {
+    .teams-grid__container {
+        padding: 5.8rem 6.6rem;
+        background-color: #f9f9f9;
+    }
+}
+
+.teams-grid__title {
+    font-family: var(--g-typography-display);
+    font-size: 2.4rem;
+    line-height: 2.7rem;
+    letter-spacing: -.02em;
+    color: #000;
+    display: flex;
+    align-items: baseline;
+    gap: .4rem;
+    margin-bottom: 1.6rem;
+    width: 100%;
+    text-transform: capitalize;
+}
+
+@media (min-width: 52.5em) {
+    .teams-grid__title {
+        font-size:2.4rem;
+        gap: .6rem;
+        margin-bottom: 3.2rem;
+    }
+}
+
+.teams-grid__title:before {
+    display: flex;
+    position: relative;
+    content: "";
+    background-image: url("https://www.motogp.com/resources/v7.7.1/i/svg-files/elements/widget-header.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 1.3rem;
+    height: 1.6rem;
+}
+
+@media (min-width: 52.5em) {
+    .teams-grid__title:before {
+        width: 1.3rem;
+    height: 1.6rem;
+    }
+}
+
+.teams-grid__menu-container {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: .8rem;
+}
+
+.teams-grid__menu-item {
+    font-size: 1rem;
+    line-height: 1.6rem;
+    color: #000;
+    padding: 0.6rem 1rem;
+    border-radius: 1.8rem;
+    border: .1rem solid #ebebeb;
+}
+
+.teams-grid__menu-item.active {
+    background-color: #c80502;
+    color: #fff;
+    border: none;
+}
+
+.teams-list__container {
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr;
+    padding: 2.4rem 0;
+    gap: .8rem;
+}
+
+@media (min-width: 40em) {
+    .teams-list__container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 52.5em) {
+    .teams-list__container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 64.0625em) {
+    .teams-list__container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.teams-list__team {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.teams-list__background, .teams-list__team {
+    border-radius: .4rem;
+    background-color: #171c21;
+}
+
+@media (min-width: 52.5em) {
+    .teams-list__team {
+        height: 30rem;
+    }
+}
+
+.teams-list__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 11.4rem;
+}
+
+.teams-list__background-team-colour {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: background-color .5s ease-in-out;
+    border-radius: .4rem;
+    opacity: .32;
+    background-color: rgb(92, 179, 58);
+}
+
+.teams-list__background-name {
+    font-size: 14.4rem;
+    font-style: italic;
+    line-height: 0;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    white-space: nowrap;
+    position: absolute;
+    left: 20%;
+    top: 40%;
+    transform: translate(-20%, -40%);
+    opacity: .24;
+}
+
+.teams-list__background-gradient {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.teams-list__background-gradient:before {
+    background: linear-gradient(270deg, transparent, #171c21 112%);
+}
+
+.teams-list__background-gradient:after {
+    background: linear-gradient(180deg, rgba(23, 28, 33, 0), #171c21);
+}
+
+.teams-list__background-gradient:after, .teams-list__background-gradient:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    border-radius: .4rem;
+    z-index: 1;
+}
+
+.teams-list__image-container {
+    display: flex;
+    order: 3;
+    z-index: 1;
+    width: 50%;
+    position: relative;
+}
+
+@media (min-width: 52.5em) {
+    .teams-list__image-container {
+        width: 100%;
+        height: 35.2rem;
+        max-width: 33rem;
+        margin: 0 auto;
+    }
+}
+
+.teams-list__image {
+    width: 100%;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+@media (min-width: 52.5em) {
+    .teams-list__image {
+        position: relative;
+        top: 3.2rem;
+        right: auto;
+    }
+}
+
+@media (min-width: 52.5em) {
+    .teams-list__image-container:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 20rem;
+        left: 0;
+        bottom: 0;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(23, 28, 33, 0), #171c21 80%);
+        border-radius: .4rem;
+    }
+}
+
+.teams-list__info-container {
+    width: 60%;
+    padding: 1.6rem;
+    display: flex;
+    flex-flow: column nowrap;
+    border-radius: .4rem;
+    position: relative;
+    z-index: 2;
+    gap: 0.6rem;
+}
+
+@media (min-width: 52.5em) {
+    .teams-list__info-container, .teams-list__info-container:before {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+@media (min-width: 52.5em) {
+    .teams-list__info-container:before {
+        content: "";
+        height: 20rem;
+        left: 0;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(23, 28, 33, 0), #171c21 65%);
+        border-radius: .4rem;
+    }
+}
+@media (min-width: 52.5em) {
+    .teams-list__info-container, .teams-list__info-container:before {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+.teams-list__info-name {
+    font-family: var(--g-typography-display);
+    font-size: 1.8rem;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 2.2rem;
+}
+
+@media (min-width: 52.5em) {
+    .teams-list__info-name {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+        z-index: 1;
+    }
+}
+
+@media (min-width: 64.0625em) {
+    .teams-list__info-name {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+    }
+}
+
+.teams-list__riders-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    gap: .4rem;
+    height: 100%;
+}
+
+.teams-list__riders-name {
+    font-size: 1rem;
+    line-height: 1rem;
+    color: #fff;
+    opacity: .8;
+}
+
+@media (min-width: 52.5em) {
+    .teams-list__riders-name {
+        font-size: 1rem;
+        line-height: 1rem;
+    }
+}
+
+@media (min-width: 64.0625em) {
+    .teams-list__riders-name {
+        line-height: 1rem;
+    }
+}
+
+.teams-list__image img {
+    border-radius: .4rem;
+    -webkit-mask-image: linear-gradient(90deg, transparent 5%, #000 20%);
+    mask-image: linear-gradient(90deg, transparent 5%, #000 20%);
+}
+
+.picture__img {
+    max-width: 100%;
+}
+
+img {
+    max-width: 100%;
+}
+
+@media (min-width: 52.5em) {
+    .teams-list__image img {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+}
