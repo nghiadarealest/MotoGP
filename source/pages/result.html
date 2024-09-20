@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MotoGP</title>
+    <link rel="stylesheet" href="../../assets/icon/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/riders.css">
     <link rel="stylesheet" href="../css/results.css">
@@ -83,11 +84,12 @@
         <section class="results-table">
             <div class="results-table__weather">
                 <div class="results-table__weather-column">
-                    <svg aria-hidden="true" role="img" class="icon results-table__weather-icon">
-                        <use xmlnsXlink="http://www.w3.org/1999/xlink" href="/resources/v7.7.1/i/svg-output/icons.svg#icn-lightrain">
+                    <!-- <svg aria-hidden="true" role="img" class="icon results-table__weather-icon">
+                        <use xmlnsXlink="http://www.w3.org/1999/xlink" href="https://www.motogp.com/resources/v7.7.1/i/svg-output/icons.svg#icn-sunny">
 
                         </use>
-                    </svg>
+                    </svg> -->
+                    <i class="ti-shine icon results-table__weather-icon"></i>
                 </div>
                 <div class="results-table__weather-column">
                     <span class="results-table__weather-header results-table__weather-header--cell">Light Rain</span>
@@ -110,61 +112,105 @@
                 <table class="results-table__table">
                     <thead>
                         <tr>
-                            <th class="results-table__header-cell results-table__header-cell--pos-points u-show-tablet ">
-                                <span class="results-table__header-cell--pos">pos.</span>
-                                <span class="results-table__header-cell--points">pts</span>
-                            </th>
-                            <th class="results-table__header-cell results-table__header-cell--pos u-hide-tablet">pos.</th>
-                            <th class="results-table__header-cell results-table__header-cell--points u-hide-tablet">pts</th>
-                            <th class="results-table__header-cell results-table__header-cell--rider">rider
-                                <span class="results-table__header-cell results-table__header-cell--team u-show-tablet">Team</span>
-                            </th>
-                            <th class="results-table__header-cell results-table__header-cell--team u-hide-tablet">Team</th>
+                            <th class="results-table__header-cell results-table__header-cell--pos ">pos.</th>
+                            <th class="results-table__header-cell results-table__header-cell--points ">pts</th>
+                            <th class="results-table__header-cell results-table__header-cell--rider">Rider</th>
+                            <th class="results-table__header-cell results-table__header-cell--team" >Team</th>
                             <th class="results-table__header-cell results-table__header-cell--time">time / gap</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="results-table__body-row">
-                            <td class="results-table__body-cell results-table__body-cell--pos-points u-show-tablet" style="border-left: 4px solid rgb(157, 180, 217);">
-                                <span class="results-table__body-cell--pos">1</span>
-                                <span class="results-table__body-cell--points">25</span>
-                            </td>
-                            <td class="results-table__body-cell results-table__body-cell--pos u-hide-tablet" style="border-left: 4px solid rgb(157, 180, 217);">1</td>
-                            <td class="results-table__body-cell results-table__body-cell--points u-hide-tablet">25</td>
+                            <td class="results-table__body-cell results-table__body-cell--pos " style="border-left: 4px solid rgb(157, 180, 217);">1</td>
+                            <td class="results-table__body-cell results-table__body-cell--points ">25</td>
                             <td class="results-table__body-cell results-table__body-cell--rider">
                                 <div class="results-table__rider-details">
                                     <div class="rider-image-container">
                                         <div class="rider-image">
-                                            <div class="js-lazy-load u-observed lazy-image-wrapper " >
-                                                <img src="https://resources.motogp.pulselive.com/photo-resources/2024/02/19/986b0e12-1db0-49d8-ae13-fd556286237a/93_Marc_MarquezFullbodyGresini.png?height=300&amp;width=200" alt="rider-bio_marcmarquez" loading="lazy" class="img undefined picture__img ">
-                                            </div>
+                                            <img src="https://resources.motogp.pulselive.com/photo-resources/2024/02/19/986b0e12-1db0-49d8-ae13-fd556286237a/93_Marc_MarquezFullbodyGresini.png?height=300&amp;width=200" alt="rider-bio_marcmarquez" loading="lazy" class="img undefined picture__img ">
                                         </div>
                                     </div>
-                                    <div class="results-table__rider-name-wrapper u-hide-tablet">
+                                    <div class="results-table__rider-name-wrapper ">
                                         <div class="results-table__rider-name">
                                             <span class="results-table__body-cell results-table__body-cell--number">93</span>
                                             <span class="results-table__body-cell results-table__body-cell--full-name">
-                                                <a href="/en/riders/marc-marquez/23e50438-a657-4fb0-a190-3262b5472f29" title="label.standings.viewRiderProfile" class="results-table__rider-link">
+                                                <a class="results-table__rider-link">
                                                     <span class="results-table__first-name">M. </span> 
                                                     Marquez
                                                 </a>
                                             </span>
                                         </div>
-                                        <img src="https://static-files.motogp.pulselive.com/assets/flags/es.svg" alt="ES flag" class="results-table__body-cell-flag">
                                     </div>
-                                    <div class="results-table__rider-name-wrapper u-show-tablet">
+                                </div>
+                            </td>
+                            <td class="results-table__body-cell results-table__body-cell--team ">
+                                <div>
+                                <img src="https://static-files.motogp.pulselive.com/assets/flags/es.svg" alt="ES flag" class="results-table__body-cell-flag">
+                                <span>Gresini Racing MotoGP </span>
+                            </div>
+                            </td>
+                            <td class="results-table__body-cell results-table__body-cell--time"><span>41:52.083</span></td>
+                        </tr>
+                        <tr class="results-table__body-row">
+                            <td class="results-table__body-cell results-table__body-cell--pos " style="border-left: 4px solid rgb(157, 180, 217);">1</td>
+                            <td class="results-table__body-cell results-table__body-cell--points ">25</td>
+                            <td class="results-table__body-cell results-table__body-cell--rider">
+                                <div class="results-table__rider-details">
+                                    <div class="rider-image-container">
+                                        <div class="rider-image">
+                                            <img src="https://resources.motogp.pulselive.com/photo-resources/2024/02/19/986b0e12-1db0-49d8-ae13-fd556286237a/93_Marc_MarquezFullbodyGresini.png?height=300&amp;width=200" alt="rider-bio_marcmarquez" loading="lazy" class="img undefined picture__img ">
+                                        </div>
+                                    </div>
+                                    <div class="results-table__rider-name-wrapper ">
                                         <div class="results-table__rider-name">
                                             <span class="results-table__body-cell results-table__body-cell--number">93</span>
                                             <span class="results-table__body-cell results-table__body-cell--full-name">
-                                                <a href="/en/riders/marc-marquez/23e50438-a657-4fb0-a190-3262b5472f29" title="label.standings.viewRiderProfile" class="results-table__rider-link">
-                                                    <span class="results-table__first-name">M. </span> Marquez</a></span>
-                                                    <img src="https://static-files.motogp.pulselive.com/assets/flags/es.svg" alt="ES flag" class="results-table__body-cell-flag">
-                                                </div>
-                                                <span class="results-table__body-cell--team">Gresini Racing MotoGP</span>
-                                            </div>
+                                                <a class="results-table__rider-link">
+                                                    <span class="results-table__first-name">M. </span> 
+                                                    Marquez
+                                                </a>
+                                            </span>
                                         </div>
-                                    </td>
-                            <td class="results-table__body-cell results-table__body-cell--team u-hide-tablet">Gresini Racing MotoGP</td>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="results-table__body-cell results-table__body-cell--team ">
+                                <div>
+                                <img src="https://static-files.motogp.pulselive.com/assets/flags/es.svg" alt="ES flag" class="results-table__body-cell-flag">
+                                <span>Gresini Racing MotoGP </span>
+                            </div>
+                            </td>
+                            <td class="results-table__body-cell results-table__body-cell--time"><span>41:52.083</span></td>
+                        </tr>
+                        <tr class="results-table__body-row">
+                            <td class="results-table__body-cell results-table__body-cell--pos " style="border-left: 4px solid rgb(157, 180, 217);">1</td>
+                            <td class="results-table__body-cell results-table__body-cell--points ">25</td>
+                            <td class="results-table__body-cell results-table__body-cell--rider">
+                                <div class="results-table__rider-details">
+                                    <div class="rider-image-container">
+                                        <div class="rider-image">
+                                            <img src="https://resources.motogp.pulselive.com/photo-resources/2024/02/19/986b0e12-1db0-49d8-ae13-fd556286237a/93_Marc_MarquezFullbodyGresini.png?height=300&amp;width=200" alt="rider-bio_marcmarquez" loading="lazy" class="img undefined picture__img ">
+                                        </div>
+                                    </div>
+                                    <div class="results-table__rider-name-wrapper ">
+                                        <div class="results-table__rider-name">
+                                            <span class="results-table__body-cell results-table__body-cell--number">93</span>
+                                            <span class="results-table__body-cell results-table__body-cell--full-name">
+                                                <a class="results-table__rider-link">
+                                                    <span class="results-table__first-name">M. </span> 
+                                                    Marquez
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="results-table__body-cell results-table__body-cell--team ">
+                                <div>
+                                <img src="https://static-files.motogp.pulselive.com/assets/flags/es.svg" alt="ES flag" class="results-table__body-cell-flag">
+                                <span>Gresini Racing MotoGP </span>
+                            </div>
+                            </td>
                             <td class="results-table__body-cell results-table__body-cell--time"><span>41:52.083</span></td>
                         </tr>
                     </tbody>

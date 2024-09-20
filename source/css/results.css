@@ -1,3 +1,12 @@
+select {
+    padding: 0 5rem 0 2rem;
+    line-height: 2.6;
+    /* background-image: url("https://www.motogp.com/resources/v7.7.1/i/elements/select-chevron-down.svg"); */
+    background-position: right 2rem center;
+    background-repeat: no-repeat;
+    background-size: 1.2rem;
+    outline: 0px;
+}
 
 .results__container {
     position: relative;
@@ -12,6 +21,7 @@
     border-top: .05rem solid rgba(51, 56, 62, .5);
     min-height: 5rem;
     flex-wrap: wrap;
+    padding: 0 4.6rem;
 }
 
 .primary-filter__filter-container:first-of-type {
@@ -25,11 +35,11 @@
     min-height: 5rem;
     padding: 0 2rem 0 1.6rem;
     position: relative;
-    width: 50%;
+    /* width: 50%; */
 }
 
 .primary-filter__filter-label {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     line-height: 1.2rem;
     letter-spacing: -.02em;
     color: #9fa0a4;
@@ -45,13 +55,14 @@
     width: 100%;
     margin: 0;
     padding: .8rem 1.8rem 0 0;
-    background-image: url("https://www.motogp.com/resources/v7.7.1/i/svg-files/elements/filter-arrow-white.svg");
+    /* background-image: url("https://www.motogp.com/resources/v7.7.1/i/svg-files/elements/filter-arrow-white.svg"); */
     background-position: 100%;
     background-size: auto;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: 800;
+    font-size: 0.8rem;
 }
 
 .primary-filter__filter-container select option {
@@ -68,6 +79,7 @@
     height: auto;
     position: relative;
     background-color: #000;
+    overflow: hidden;
 }
 
 .results__hero-image {
@@ -102,8 +114,8 @@
 }
 
 .results__hero-text {
-    font-size: 2.4rem;
-    line-height: 2.4rem;
+    font-size: 2rem;
+    line-height: 2rem;
     color: #fff;
     width: 75%;
     padding: 1.6rem;
@@ -127,8 +139,7 @@
 }
 
 .results__hero-details-location {
-    font-family: var(--g-typography-copy-light);
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 1.4rem;
     color: #fff;
     opacity: .8;
@@ -146,7 +157,7 @@
 }
 
 .results__hero-details-dates {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 1.4rem;
     color: #fff;
     opacity: .8;
@@ -155,7 +166,7 @@
 
 /* table */
 .results-table {
-    margin: 1.6rem 0 0;
+    margin: 4.8rem 4.8rem 2.4rem;
 }
 
 .results-table__weather {
@@ -177,23 +188,22 @@
 }
 
 .results-table__weather-icon {
-    fill: #585e65;
-    width: 3rem;
-    height: 3rem;
+    color: #585e65;
+    font-size: 1.6rem;
 }
 
 .results-table__weather-header--cell {
     color: #585e65;
 }
 .results-table__weather-header {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     color: #9fa0a4;
     font-weight: 700;
     line-height: 1;
 }
 
 .results-table__weather-cell {
-    font-size: 1.4rem;
+    font-size: 1rem;
     line-height: 1.2;
     color: #585e65;
     font-weight: 700;
@@ -201,14 +211,22 @@
 
 .results-table__table {
     width: 100%;
-    table-layout: fixed;
+    /* table-layout: fixed; */
     background: #fff;
     animation: fade-in .5s ease;
+    
+}
+
+.results-table__table td {
+    border-collapse: collapse;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+
 }
 
 .results-table__header-cell {
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #000;
     text-align: left;
     height: 2.4rem;
@@ -221,6 +239,8 @@
     width: 6.5rem;
     padding: 0;
 }
+
+.results-table__header-cell--points { padding: 0; color: #9fa0a4; }
 
 .results-table__header-cell--pos {
     width: 8rem;
@@ -237,21 +257,45 @@
 }
 
 .results-table__body-cell--pos {
-    font-family: var(--g-typography-display);
+    padding: 0;
     text-align: center;
-    font-size: 3.2rem;
+    font-size: 1.6rem;
+    width: 8%;
 }
 
 .results-table__body-cell--points {
-    font-family: var(--g-typography-display-light);
-    font-size: 2rem;
+    padding: 0;
+    font-size: 1.6rem;
     color: #9fa0a4;
+}
+
+.results-table__header-cell--rider {
+    text-align: center;
+    /* width: 40rem; */
+}
+
+.results-table__header-cell--team {
+    color: #9fa0a4;
+}
+
+.results-table__header-cell--time {
+    text-align: right;
+    /* width: 10rem; */
 }
 
 .results-table__body-cell {
     color: #171c21;
     padding: 0 1rem 0 1.6rem;
     position: relative;
+    font-size: 1.4rem;
+}
+
+.results-table__body-cell--full-name, .results-table__body-cell--number {
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: block;
+    min-width: 3.5rem;
+    padding: 0 1rem 0 0;
 }
 
 .results-table__rider-details {
@@ -260,27 +304,8 @@
     align-items: center;
 }
 
-.results-table__rider-details .rider-image-container {
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 7rem;
-    overflow: hidden;
-    width: 10rem;
-    position: relative;
-    margin-right: 5rem;
-}
-
-.results-table__rider-details .rider-image-container .picture__img {
-    min-width: 15.5rem;
-    margin-left: -3rem;
-}
-
-.rider-image img {
-    width: 100%;
-}
-.picture__img {
-    max-width: 100%;
+.rider-image-container {
+    margin-left: 3rem;
 }
 
 .results-table__rider-name-wrapper {
@@ -299,24 +324,9 @@
     text-align: left;
 }
 
-.results-table__body-cell--full-name, .results-table__body-cell--number {
-    font-weight: 700;
-    font-size: 2rem;
-    display: block;
-    min-width: 3.5rem;
-    padding: 0 1rem 0 0;
-}
-.results-table__body-cell--number {
-    color: #9fa0a4;
-}
-.results-table__body-cell {
-    color: #171c21;
-    padding: 0 1rem 0 1.6rem;
-    position: relative;
-}
 
 .results-table__body-cell-flag {
-    height: 1.8rem;
+    height: 1.2rem;
     border: .1rem solid #ededed;
     border-radius: .4rem;
 }
@@ -324,15 +334,50 @@
 .results-table__body-cell--gap, 
 .results-table__body-cell--gap-first, 
 .results-table__body-cell--team {
-    font-size: 1.6rem;
+    font-size: 1rem;
     letter-spacing: .025rem;
     color: #9fa0a4;
     font-weight: 700;
 }
 
+.results-table__body-cell--team div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    white-space: nowrap;
+    margin-left: -6rem;
+}
+
 .results-table__body-cell--time {
     text-align: right;
-    font-weight: 700;
-    font-size: 1.6rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.results-table__body-cell--number {
+    color: #9fa0a4;
+}
+
+.results-table__rider-details .rider-image-container {
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 7rem;
+    overflow: hidden;
+    width: 10rem;
+    position: relative;
+}
+
+.results-table__rider-details .rider-image-container .picture__img {
+    min-width: 10.5rem;
+    margin-left: -3rem;
+}
+
+.rider-image img {
+    width: 100%;
+}
+.picture__img {
+    max-width: 100%;
 }
 

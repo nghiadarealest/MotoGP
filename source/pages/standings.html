@@ -4,98 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/riders.css">
     <link rel="stylesheet" href="../css/results.css">
+    <link rel="stylesheet" href="../css/standing.css">
+
 </head>
 <body>
     
+    <header class="header"></header>
 
-    
-        <div class="header3">
-            <h1>Championship Standings 2024</h1>
+    <div class="sub-header"></div>
+    <div class="result">
+        <div class="results__container">
+            <div class="primary-filter">
+                <div class="primary-filter__filter-container" style="flex:1">
+                    <div class="primary-filter__filter-label">Year</div>
+                    <select class="primary-filter__filter-select primary-filter__filter-select--year">
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+                </div>
+                <div class="primary-filter__filter-container" style="flex:1">
+                    <div class="primary-filter__filter-label">Championship</div>
+                    <select class="primary-filter__filter-select primary-filter__filter-select--championship">
+                        <option value="championship-standings">Riders' Championship</option>
+                        <option value="team-standings">Teams' Championship</option>
+                        <option value="constructor-standings">Constructors' Championship</option>
+                        <option value="bmw-award">BMW M Award</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="standings__hero-container">
+                <div class="standings__hero-image">
+                    <div class="standings-image-container">
+                        <div class="standings-image">
+                            <div class="js-lazy-load u-observed lazy-image-wrapper " >
+                              <img src="https://resources.motogp.pulselive.com/photo-resources/2023/06/23/c094c164-18eb-42cc-9d8c-4626a857ff41/riders-championship-hero.jpg?height=300&amp;width=1440"
+                               alt="riders-championship-hero" loading="lazy" class="img undefined picture__img object-fit-cover-picture__img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="standings__hero-text">Championship Standings 2024</div>
+            </div>
         </div>
-        
-        <div class="content">
-            <div class="category">
-                <label for="category">Category:</label>
-                <select id="category">
-                    <option value="motogp">MotoGP</option>
-                    <option value="moto2">Moto2</option>
-                    <option value="moto3">Moto3</option>
+    </div>
+
+    <div class ="standings-table__table-wrapper">
+        <div class="primary-filter secondary-filter">
+            <div class="primary-filter__filter-container ">
+                <div class="primary-filter__filter-label">Category</div>
+                <select class="primary-filter__filter-select primary-filter__filter-select--cat">
+                    <option data-name="motogp" >MotoGP™</option>
+                    <option data-name="moto2" >Moto2™</option>
+                    <option data-name="moto3" >Moto3™</option>
+                    <option data-name="motoe" >MotoE™</option>
                 </select>
             </div>
-        
-            <table>
+        </div>
+
+        <div class="results-table__table-wrapper">
+            <table class="results-table__table">
                 <thead>
-                    <tr1>
-                        <th>Pos.</th>
-                        <th>Rider</th>
-                        <th>Team</th>
-                        <th>Points</th>
-                    </tr1>
+                    <tr>
+                        <th class="results-table__header-cell results-table__header-cell--pos ">pos.</th>
+                        <th class="results-table__header-cell results-table__header-cell--rider">Rider</th>
+                        <th class="results-table__header-cell results-table__header-cell--team" >Team</th>
+                        <th class="results-table__header-cell results-table__header-cell--points ">Points</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr class="leader">
-                        <td>1</td>
-                        <td>
-                            <img src="" alt="Rider 1" class="rider-img">
-                            J. Martin
+                    <span class="standings-table__position-gradient" 
+                        style="background: linear-gradient(90deg, rgb(23, 28, 33) 0%, rgb(130, 52, 194) 100%);">
+                    </span>
+                    <tr class="results-table__body-row">
+                        <td class="results-table__body-cell results-table__body-cell--pos " style="border-left: 4px solid rgb(157, 180, 217);color:#fff">1</td>
+                        <td class="results-table__body-cell results-table__body-cell--rider">
+                            <div class="results-table__rider-details">
+                                <div class="rider-image-container">
+                                    <div class="rider-image">
+                                        <img src="https://resources.motogp.pulselive.com/photo-resources/2024/02/19/986b0e12-1db0-49d8-ae13-fd556286237a/93_Marc_MarquezFullbodyGresini.png?height=300&amp;width=200" alt="rider-bio_marcmarquez" loading="lazy" class="img undefined picture__img ">
+                                    </div>
+                                </div>
+                                <div class="results-table__rider-name-wrapper ">
+                                    <div class="results-table__rider-name">
+                                        <span class="results-table__body-cell results-table__body-cell--number">93</span>
+                                        <span class="results-table__body-cell results-table__body-cell--full-name">
+                                            <a class="results-table__rider-link">
+                                                <span class="results-table__first-name">M. </span> 
+                                                Marquez
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
-                        <td>
-                            Prima Pramac Racing
-                            <img src="" alt="Country Flag" class="flag-img">
+                        <td class="results-table__body-cell results-table__body-cell--team ">
+                            <div>
+                            <img src="https://static-files.motogp.pulselive.com/assets/flags/es.svg" alt="ES flag" class="results-table__body-cell-flag">
+                            <span>Gresini Racing MotoGP </span>
+                        </div>
                         </td>
-                        <td>312</td>
+                        <td class="results-table__body-cell results-table__body-cell--points ">25</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>
-                            <img src="" alt="Rider 2" class="rider-img">
-                            F. Bagnaia
+                    <tr class="results-table__body-row">
+                        <td class="results-table__body-cell results-table__body-cell--pos " style="border-left: 4px solid rgb(208, 110, 30)">2</td>
+                        <td class="results-table__body-cell results-table__body-cell--rider">
+                            <div class="results-table__rider-details">
+                                <div class="rider-image-container">
+                                    <div class="rider-image">
+                                        <img src="https://resources.motogp.pulselive.com/photo-resources/2024/02/19/986b0e12-1db0-49d8-ae13-fd556286237a/93_Marc_MarquezFullbodyGresini.png?height=300&amp;width=200" alt="rider-bio_marcmarquez" loading="lazy" class="img undefined picture__img ">
+                                    </div>
+                                </div>
+                                <div class="results-table__rider-name-wrapper ">
+                                    <div class="results-table__rider-name">
+                                        <span class="results-table__body-cell results-table__body-cell--number">93</span>
+                                        <span class="results-table__body-cell results-table__body-cell--full-name">
+                                            <a class="results-table__rider-link">
+                                                <span class="results-table__first-name">M. </span> 
+                                                Marquez
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
-                        <td>
-                            Ducati Lenovo Team
-                            <img src="" alt="Country Flag" class="flag-img">
+                        <td class="results-table__body-cell results-table__body-cell--team ">
+                            <div>
+                            <img src="https://static-files.motogp.pulselive.com/assets/flags/es.svg" alt="ES flag" class="results-table__body-cell-flag">
+                            <span>Gresini Racing MotoGP </span>
+                        </div>
                         </td>
-                        <td>305</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>
-                            <img src="" alt="Rider 3" class="rider-img">
-                            M. Marquez
-                        </td>
-                        <td>
-                            Gresini Racing MotoGP
-                            <img src="" alt="Country Flag" class="flag-img">
-                        </td>
-                        <td>259</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>
-                            <img src="" alt="Rider 4" class="rider-img">
-                            E. Bastianini
-                        </td>
-                        <td>
-                            Ducati Lenovo Team
-                            <img src="" alt="Country Flag" class="flag-img">
-                        </td>
-                        <td>250</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>
-                            <img src="" alt="Rider 5" class="rider-img">
-                            B. Binder
-                        </td>
-                        <td>
-                            Red Bull KTM Factory Racing
-                            <img src="" alt="Country Flag" class="flag-img">
-                        </td>
-                        <td>161</td>
+                        <td class="results-table__body-cell results-table__body-cell--points ">25</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+    </div>
+    
+            
+
+    <script src="../component/header.js"></script>
+    <script src="../component/resultHeader.js"></script>
+    
 </body>
 </html>

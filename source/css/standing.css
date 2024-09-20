@@ -1,0 +1,128 @@
+
+.standings__hero-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 11.6rem;
+    height: auto;
+    position: relative;
+    background-color: #000;
+}
+
+.standings__hero-image, .standings__hero-image:after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.standings__hero-image:after {
+    left: 0;
+    top: 0;
+    content: "";
+    display: block;
+    background: linear-gradient(90deg, #000 35%, transparent 70%);
+}
+
+.standings__hero-text {
+    color: #fff;
+    width: 55%;
+    padding: 1.6rem;
+    position: absolute;
+    left: 0;
+    font-size: 5.2rem;
+    line-height: 5.2rem;
+}
+
+/* table */
+.standings-table__table-wrapper {
+    padding: 4rem 5.6rem 2.4rem;
+}
+
+.standings-table__table-wrapper .primary-filter {
+    width: 50%;
+}
+
+.primary-filter {
+    display: flex;
+    position: relative;
+    background-color: #000;
+    background-image: radial-gradient(96.8% 493.26% at 100% 93.41%, rgba(148, 4, 1, .23) 0, rgba(148, 4, 1, 0) 100%);
+    border-top: .05rem solid rgba(51, 56, 62, .5);
+    min-height: 5rem;
+    flex-wrap: wrap;
+}
+
+.primary-filter.secondary-filter {
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
+.primary-filter__filter-container{ 
+    width: 30%;
+}
+
+.primary-filter.secondary-filter .primary-filter__filter-container {
+    border: .5px solid #eee;
+    background: #fff;
+}
+
+.primary-filter__filter-label {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    letter-spacing: -.02em;
+    color: #9fa0a4;
+    pointer-events: none;
+    position: absolute;
+    top: .8rem;
+}
+
+.primary-filter.secondary-filter .primary-filter__filter-container select {
+    color: #161616;
+    font-weight: 800;
+    /* background-image: url("https://www.motogp.com/resources/v7.7.1/i/svg-files/elements/filter-arrow-black.svg"); */
+}
+
+select {
+    padding: 0 5rem 0 2rem;
+    line-height: 2.6;
+    /* background-image: url("https://www.motogp.com/resources/v7.7.1/i/elements/select-chevron-down.svg"); */
+    background-position: right 2rem center;
+    background-repeat: no-repeat;
+    background-size: 1.2rem;
+}
+
+.primary-filter__filter-container select {
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    margin: 0;
+    padding: .8rem 1.8rem 0 0;
+    /* background-image: url("https://www.motogp.com/resources/v7.7.1/i/svg-files/elements/filter-arrow-black.svg"); */
+    background-position: 100%;
+    background-size: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 800;
+}
+.primary-filter__filter-container select option {
+    background-color: #000;
+}
+
+.primary-filter.secondary-filter .primary-filter__filter-container select option {
+    background-color: #fff;
+}
+
+.results-table__table-wrapper {
+    position: relative;
+}
+
+.standings-table__position-gradient {
+    position: absolute;
+    width: 100%;
+    height: 7.1rem;
+    left: 0;
+    top: 2.6rem;
+}
