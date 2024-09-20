@@ -168,7 +168,7 @@
 }
 
 .rider-list__background-name {
-    font-size: 14.4rem;
+    font-size: 9.4rem;
     font-style: italic;
     line-height: 0;
     text-align: center;
@@ -178,7 +178,6 @@
     position: absolute;
     left: 20%;
     top: 40%;
-    transform: translate(-20%, -40%);
     opacity: .24;
 
     left: 50%;
