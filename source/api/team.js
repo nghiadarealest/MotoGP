@@ -9,7 +9,7 @@ fetch("https://motogp.onrender.com/api/teams/getByCategory?category=MotoGP")
 
             body.innerHTML +=`<a class="teams-list__team">
                     <div class="teams-list__background">
-                        <div class="teams-list__background-team-colour "></div>
+                        <div class="teams-list__background-team-colour" style="background-color:${e.color};"></div>
                         <div class="teams-list__background-name">${e.name}</div>
                         <div class="teams-list__background-gradient"></div>
                     </div>

@@ -133,7 +133,6 @@
     transition: background-color .5s ease-in-out;
     border-radius: .4rem;
     opacity: .32;
-    background-color: rgb(92, 179, 58);
 }
 
 .teams-list__background-name {

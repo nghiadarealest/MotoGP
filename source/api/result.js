@@ -17,11 +17,9 @@ fetch("https://motogp.onrender.com/api/calendarRider/getByCalendarCategorySessio
                 valTimeGap = `+${(parseFloat(e.timeFinish.replace(':', '')) - parseFloat(max.replace(':', ''))).toFixed(3)}`;
             }
 
-            console.log(valTimeGap)
-
             body.innerHTML += `
             <tr class="results-table__body-row">
-                <td class="results-table__body-cell results-table__body-cell--pos " style="border-left: 4px solid rgb(157, 180, 217);">${index +1}</td>
+                <td class="results-table__body-cell results-table__body-cell--pos " style="border-left: 4px solid ${e.riderId.teamId.color};">${index +1}</td>
                 <td class="results-table__body-cell results-table__body-cell--points ">${e.point}</td>
                 <td class="results-table__body-cell results-table__body-cell--rider">
                     <div class="results-table__rider-details">
@@ -32,7 +30,7 @@ fetch("https://motogp.onrender.com/api/calendarRider/getByCalendarCategorySessio
                         </div>
                         <div class="results-table__rider-name-wrapper ">
                             <div class="results-table__rider-name">
-                                <span class="results-table__body-cell results-table__body-cell--number">93</span>
+                                <span class="results-table__body-cell results-table__body-cell--number">${e.riderId.number}</span>
                                 <span class="results-table__body-cell results-table__body-cell--full-name">
                                     <a class="results-table__rider-link">
                                         <span class="results-table__first-name">${(name[0].split(''))[0]}. </span> 

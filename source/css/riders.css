@@ -164,7 +164,7 @@
     top: 0;
     transition: background-color .5s ease-in-out;
     opacity: .32;
-    background-color: rgb(204, 0, 0);
+    
 }
 
 .rider-list__background-name {

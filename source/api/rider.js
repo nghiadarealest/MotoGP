@@ -11,7 +11,7 @@ fetch("https://motogp.onrender.com/api/riders/getByCategory?category=MotoGP")
 
             body.innerHTML += `<a class="rider-list__rider ">
                     <div class="rider-list__background">
-                        <div class="rider-list__background-team-colour"></div>
+                        <div class="rider-list__background-team-colour" style="background-color: ${e.teamId.color}"></div>
                         <div class="rider-list__background-name">${e.hashtag}</div>
                         <div class="rider-list__background-gradient"></div>
                     </div>
