@@ -1,8 +1,33 @@
-fetch("https://motogp.onrender.com/api/riders/getByCategory?category=MotoGP")
+var fetchStanding = (category) => {
+
+    if(!category) category = 'MotoGP'
+
+    fetch(`https://motogp.onrender.com/api/riders/getByCategory?category=${category}`)
     .then(response => response.json())
     .then(data => {
         console.log(data)
         var body =  document.querySelector('.results-table__tbody');
+        var errorContainer =  document.querySelector('.error-container')
+
+        if(data.length == 0) {
+            errorContainer.innerHTML=`
+            <img src="https://www.motogp.com/resources/v7.7.1/i/svg-files/elements/motogp-logo.svg" class="icon error-container__icon"/>
+                <span class="error-container__text">
+                404 NOT FOUND
+            </span>
+            `
+            body.innerHTML = ``
+            return
+        } else {
+            errorContainer.innerHTML = ''
+            body.innerHTML = ``
+
+            body.innerHTML += `
+            <span class="standings-table__position-gradient" 
+                style="background: linear-gradient(90deg, rgb(23, 28, 33) 0%, rgb(130, 52, 194) 100%);">
+            </span>`
+        }
+
 
         var colorColPos
         data.forEach((e,index) => {
@@ -50,3 +75,13 @@ fetch("https://motogp.onrender.com/api/riders/getByCategory?category=MotoGP")
 
     })
     .catch(e => console.log(e))
+}
+
+fetchStanding()
+
+//stading
+document.querySelector('.primary-filter__filter-select-standing').addEventListener('change', function(e) {
+    fetchStanding(e.target.value)
+})
+
+export {fetchStanding}

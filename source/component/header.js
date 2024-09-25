@@ -19,12 +19,7 @@ header.innerHTML = `
                         <div class="main-navigation__menu-container">
                             <ul class="main-navigation__menu-list js-menu-list">
             <li class="main-navigation__item     ">
-                    <a class="main-navigation__link    js-tracked-event"
-                        data-nav-index="0"
-                        data-event-type="click"
-                        data-event="header_menu"
-                        data-event-params="calendar"
-                        
+                    <a class="main-navigation__link  "
                         href="/source/pages/calendal.html"
                     >
                         Calendar
@@ -32,12 +27,7 @@ header.innerHTML = `
             </li>
             <li class="main-navigation__item     ">
                     
-                    <a class="main-navigation__link    js-tracked-event"
-                        data-nav-index="1"
-                        data-event-type="click"
-                        data-event="header_menu"
-                        data-event-params="results & standings"
-                        
+                    <a class="main-navigation__link    "
                         href="/source/pages/result.html"
                     >
                         Results & Standings
@@ -45,12 +35,7 @@ header.innerHTML = `
             </li>
             <li class="main-navigation__item     ">
                     
-                    <a class="main-navigation__link    js-tracked-event"
-                        data-nav-index="2"
-                        data-event-type="click"
-                        data-event="header_menu"
-                        data-event-params="riders & teams"
-                        
+                    <a class="main-navigation__link    "
                         href="/source/pages/rider.html"
                     >
                         Riders & Teams
@@ -62,3 +47,4 @@ header.innerHTML = `
                 </div>
             </div>
         </div>`
+

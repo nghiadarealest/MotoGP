@@ -18,11 +18,13 @@
         <div class="teams-grid__title">Teams</div>
 
         <div class="teams-grid__menu-container">
-            <button class="teams-grid__menu-item active"> MotoGP™ </button>
-            <button class="teams-grid__menu-item"> Moto2™ </button>
-            <button class="teams-grid__menu-item"> Moto3™ </button>
-            <button class="teams-grid__menu-item"> MotoE™ </button>
+            <button class="teams-grid__menu-item active" value="MotoGP"> MotoGP™ </button>
+            <button class="teams-grid__menu-item" value="Moto2"> Moto2™ </button>
+            <button class="teams-grid__menu-item" value="Moto3"> Moto3™ </button>
+            <button class="teams-grid__menu-item" value="MotoE"> MotoE™ </button>
         </div>
+
+        <div class="error-container"></div>
 
         <div class="teams-grid__motogp ">
             <div class="teams-list__container ">
@@ -32,7 +34,9 @@
 
     <script src="../component/header.js"></script>
     <script src="../component/riderHeader.js"></script>
-    <script src="../api/team.js"></script>
+    <script type="module" src="../api/team.js"></script>
+    <script type="module" src="../js/main.js"></script>
+
 
 </body>
 </html>

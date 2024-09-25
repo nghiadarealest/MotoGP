@@ -1,14 +1,52 @@
-fetch("https://motogp.onrender.com/api/calendarRider/getByCalendarCategorySession?calendarId=66da7ec4637fb57ad8b12ae9&category=MotoGP&session=RAC&year=2024")
+var fetchOptionEvent = () => {
+    fetch(`https://motogp.onrender.com/api/calendars/getAll?year=2024`)
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        var body =  document.querySelector('.primary-filter__filter-select--event');
+
+        data.forEach(e => {
+            body.innerHTML += `<option value=${e._id}>${e.title}</option>`
+        })
+    })
+    .catch(e => console.log(e))
+}
+
+fetchOptionEvent()
+
+
+var fetchResult = (calendarId, category, session) => {
+
+    if(!calendarId) calendarId = "66f170e0dc1fa1dd4a86f419";
+    if(!category) category = 'MotoGP';
+    if(!session) session = 'RAC';
+
+    fetch(`https://motogp.onrender.com/api/calendarRider/getByCalendarCategorySession?calendarId=${calendarId}&category=${category}&session=${session}&year=2024`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data )
 
         var body =  document.querySelector('.results-table__tbody');
+        var errorContainer =  document.querySelector('.error-container')
+
+        if(data.length == 0) {
+            errorContainer.innerHTML=`
+            <img src="https://www.motogp.com/resources/v7.7.1/i/svg-files/elements/motogp-logo.svg" class="icon error-container__icon"/>
+                <span class="error-container__text">
+                404 NOT FOUND
+            </span>
+            `
+            body.innerHTML = ``
+            return
+        } else {
+            errorContainer.innerHTML = ''
+        }
+        body.innerHTML = ''
         var max
 
         data[0].riders.forEach((e, index) => {
             var name = e.riderId.name.split(' ')
             var valTimeGap 
+            var point
 
             if(index == 0) {
                 max = e.timeFinish
@@ -17,10 +55,20 @@ fetch("https://motogp.onrender.com/api/calendarRider/getByCalendarCategorySessio
                 valTimeGap = `+${(parseFloat(e.timeFinish.replace(':', '')) - parseFloat(max.replace(':', ''))).toFixed(3)}`;
             }
 
+            if( data[0].session == "RAC" || data[0].session == "SPR") {
+                if(e.point == 0 ) {
+                    point = ''
+                }else {
+                    point = e.point
+                }
+            } else {
+                point = ''
+            }
+
             body.innerHTML += `
             <tr class="results-table__body-row">
                 <td class="results-table__body-cell results-table__body-cell--pos " style="border-left: 4px solid ${e.riderId.teamId.color};">${index +1}</td>
-                <td class="results-table__body-cell results-table__body-cell--points ">${e.point}</td>
+                <td class="results-table__body-cell results-table__body-cell--points ">${point}</td>
                 <td class="results-table__body-cell results-table__body-cell--rider">
                     <div class="results-table__rider-details">
                         <div class="rider-image-container">
@@ -52,3 +100,11 @@ fetch("https://motogp.onrender.com/api/calendarRider/getByCalendarCategorySessio
         })
     })
     .catch(e => console.log(e))
+}
+
+fetchResult()
+
+
+
+export {fetchResult}
+

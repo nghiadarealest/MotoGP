@@ -1,4 +1,7 @@
 
+.sub-header {
+    margin-top: 145px;
+}
 /* rider header */
 .rider-header {
     display: flex;
@@ -75,6 +78,18 @@
     min-width: 5rem;
     text-align: center;
     white-space: nowrap;
+}
+
+.tabs__link:hover {
+    color: #de3023;
+    font-size: 1.4rem;
+
+}
+
+.tabs__link.active {
+    color: #de3023;
+    font-size: 1.4rem;
+
 }
 
 /* rider-grid */

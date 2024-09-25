@@ -16,7 +16,7 @@ header.innerHTML = `
             <nav class="tabs widget-outer-spacing">
                 <ul class="tabs__list">
                     <li class="tabs__item  ">
-                        <a href="/source/pages/rider.html" class="tabs__link is-active" >
+                        <a href="/source/pages/rider.html" class="tabs__link" >
                             <span class="tabs__link-text">
                                 Riders
                             </span>
@@ -24,7 +24,7 @@ header.innerHTML = `
                     </li>
 
                     <li class="tabs__item  ">
-                        <a href="/source/pages/teams.html" class="tabs__link is-active" >
+                        <a href="/source/pages/teams.html" class="tabs__link" >
                             <span class="tabs__link-text">
                                 Teams
                             </span>

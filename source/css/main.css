@@ -70,8 +70,9 @@ button:hover {
     padding-right: 10px;
 }
 .main-navigation {
-    position: sticky;
+    position: fixed;
     top: 0;
+    right: 0;
     z-index: 400;
     background-color: #000;
     transition: transform .4s;
@@ -139,6 +140,15 @@ button:hover {
     border-radius: 1.2rem;
 }
 
+.main-navigation__link.active {
+    color: #de3023;
+}
+
+.main-navigation__link:hover {
+    color: #de3023;
+
+}
+
 
 /* body */
 .banner {
@@ -179,4 +189,23 @@ button:hover {
             font-weight: bold;
             text-shadow: 3px 3px 9px rgba(0, 0, 0, 0.7);
             font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+/* error */
+
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.error-container__text {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+    padding: 10px 0 60px;
+}
+
+.error-container__icon {
+    padding-top: 60px;
 }

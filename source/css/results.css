@@ -342,7 +342,7 @@ select {
 
 .results-table__body-cell--team div{
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 1rem;
     white-space: nowrap;

@@ -1,9 +1,28 @@
-fetch("https://motogp.onrender.com/api/riders/getByCategory?category=MotoGP")
+var fetchRider = (category) => {
+
+    if(!category) category= 'MotoGP'
+
+    fetch(`https://motogp.onrender.com/api/riders/getByCategory?category=${category}`)
     .then(response => response.json())
     .then(data => {
         console.log(data)
 
         var body =  document.querySelector('.rider-list__container');
+        var errorContainer =  document.querySelector('.error-container')
+
+        if(data.length == 0) {
+            errorContainer.innerHTML=`
+            <img src="https://www.motogp.com/resources/v7.7.1/i/svg-files/elements/motogp-logo.svg" class="icon error-container__icon"/>
+                <span class="error-container__text">
+                404 NOT FOUND
+            </span>
+            `
+            body.innerHTML = ``
+            return
+        } else {
+            errorContainer.innerHTML = ''
+        }
+        body.innerHTML = ''
 
         data.forEach((e, index) => {
             var name = e.name.split(' ')
@@ -42,3 +61,11 @@ fetch("https://motogp.onrender.com/api/riders/getByCategory?category=MotoGP")
         })
     })
     .catch(e => console.log(e))
+}
+
+fetchRider()
+
+export { fetchRider };
+
+
+

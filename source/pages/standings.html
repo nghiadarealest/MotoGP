@@ -59,11 +59,11 @@
         <div class="primary-filter secondary-filter">
             <div class="primary-filter__filter-container ">
                 <div class="primary-filter__filter-label">Category</div>
-                <select class="primary-filter__filter-select primary-filter__filter-select--cat">
-                    <option data-name="motogp" >MotoGP™</option>
-                    <option data-name="moto2" >Moto2™</option>
-                    <option data-name="moto3" >Moto3™</option>
-                    <option data-name="motoe" >MotoE™</option>
+                <select class="primary-filter__filter-select-standing">
+                    <option value="MotoGP" >MotoGP™</option>
+                    <option value="Moto2" >Moto2™</option>
+                    <option value="Moto3" >Moto3™</option>
+                    <option value="MotoE" >MotoE™</option>
                 </select>
             </div>
         </div>
@@ -79,19 +79,20 @@
                     </tr>
                 </thead>
                 <tbody class="results-table__tbody">
-                    <span class="standings-table__position-gradient" 
-                        style="background: linear-gradient(90deg, rgb(23, 28, 33) 0%, rgb(130, 52, 194) 100%);">
-                    </span>
+                    
                 </tbody>
             </table>
         </div>
+
+        <div class="error-container"></div>
     </div>
     
             
 
     <script src="../component/header.js"></script>
     <script src="../component/resultHeader.js"></script>
-    <script src="../api/standing.js"></script>
+    <script type="module" src="../api/standing.js"></script>
+
 
     
 </body>

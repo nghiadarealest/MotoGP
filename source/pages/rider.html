@@ -17,30 +17,35 @@
     <div class="rider-grid__motogp">
         <div class="rider-grid__container">
             <div class="rider-grid__menu-container ">
-                <button  class="rider-grid__menu-item active">
+                <button  class="rider-grid__menu-item active" value="MotoGP">
                     MotoGP™    
                 </button>
                 <button
-                    class="rider-grid__menu-item ">
+                    class="rider-grid__menu-item " value="Moto2">
                     Moto2™
                 </button>
-                <button class="rider-grid__menu-item ">
+                <button class="rider-grid__menu-item " value="Moto3">
                     Moto3™
                 </button>
-                <button class="rider-grid__menu-item " >
+                <button class="rider-grid__menu-item " value="MotoE">
                     MotoE™    
                 </button>
             </div>
 
+            <div class="rider-list__career-type rider-grid__title">Official</div> 
+
+            <div class="error-container"></div>
+            
             <div class="rider-list__container ">
-                <div class="rider-list__career-type rider-grid__title">Official</div> 
             </div>
         </div>
     </div>
 
     <script src="../component/header.js"></script>
     <script src="../component/riderHeader.js"></script>
-    <script src="../api/rider.js"></script>
+    <script type="module" src="../api/rider.js"></script>
+    <script type="module" src="../js/main.js"></script>
+
 
 
 </body>
