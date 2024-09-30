@@ -1,3 +1,5 @@
+
+
 var fetchOptionEvent = () => {
     fetch(`https://motogp.onrender.com/api/calendars/getAll?year=2024`)
     .then(response => response.json())
@@ -14,15 +16,23 @@ var fetchOptionEvent = () => {
 fetchOptionEvent()
 
 
+
 var fetchResult = (calendarId, category, session) => {
 
     if(!calendarId) calendarId = "66f170e0dc1fa1dd4a86f419";
     if(!category) category = 'MotoGP';
     if(!session) session = 'RAC';
 
+    var loadingElement = document.querySelector('.loading-indicator'); 
+    loadingElement.innerHTML = `<img src="https://www.motogp.com/resources/v7.7.1/i/svg-files/elements/motogp-logo.svg" class="icon loading-indicator__icon"/>
+                    <span class="loading-indicator__text">
+                    LOADING
+                </span>`;
+
     fetch(`https://motogp.onrender.com/api/calendarRider/getByCalendarCategorySession?calendarId=${calendarId}&category=${category}&session=${session}&year=2024`)
     .then(response => response.json())
     .then(data => {
+        loadingElement.innerHTML = ''
         console.log(data )
 
         var body =  document.querySelector('.results-table__tbody');

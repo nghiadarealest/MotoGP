@@ -1,9 +1,18 @@
+
 var fetchCalendar = (year) => {
     if(!year) year = 2024
+
+
+    var loadingElement = document.querySelector('.loading-indicator'); 
+    loadingElement.innerHTML = `<img src="https://www.motogp.com/resources/v7.7.1/i/svg-files/elements/motogp-logo.svg" class="icon loading-indicator__icon"/>
+                    <span class="loading-indicator__text">
+                    LOADING
+                </span>`;
 
     fetch(`https://motogp.onrender.com/api/calendars/getAll?year=${year}`)
         .then(response => response.json())
         .then(data => {
+            loadingElement.innerHTML = ''
             console.log(data)
             var month;
             var body =  document.querySelector('.calendar-listings__month');

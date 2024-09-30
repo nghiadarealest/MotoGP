@@ -209,3 +209,64 @@ button:hover {
 .error-container__icon {
     padding-top: 60px;
 }
+
+
+.loading-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loading-indicator__text {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+    padding: 10px 0 60px;
+}
+
+.loading-indicator__icon {
+    padding-top: 60px;
+}
+
+/* login */
+.sso {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    height: 4.5rem;
+    margin-left: auto;
+    position: relative;
+    margin-right: 40px;
+}
+
+.sso__login-button, .sso__register-button {
+    font-size: 1rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.sso__login-button:after {
+    font-size: 1rem;
+    color: #fff;
+    content: "|";
+    order: 2;
+    position: absolute;
+    padding: 0 6px;
+}
+.sso__register-button {
+    display: flex;
+}
+
+.sso__register-button-text {
+    margin-right: 8px;
+}
+
+.username {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.sso--main-bar i {
+    font-size: 1rem;
+
+}

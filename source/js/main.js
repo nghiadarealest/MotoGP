@@ -5,6 +5,9 @@ import {fetchResult} from '../api/result.js';
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
+//http://localhost:3000
+//https://motogp.onrender.com
+
 const textNavs = $$('.main-navigation__link')
 const tabItems = $$('.tabs__link')
 const riderMenuItems = $$('.rider-grid__menu-item')

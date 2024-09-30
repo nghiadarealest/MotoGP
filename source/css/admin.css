@@ -1,0 +1,17 @@
+.row div{
+    padding-top: 10px;
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
+.flag, .image {
+    height: 36px;
+}
+
+.wrap-add-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 60px;
+}

@@ -219,7 +219,7 @@ select {
 
 .results-table__table td {
     border-collapse: collapse;
-    border-bottom: 1px solid #ddd;
+    /* border-bottom: 1px solid #ddd; */
     border-top: 1px solid #ddd;
 
 }

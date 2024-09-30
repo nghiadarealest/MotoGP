@@ -1,11 +1,21 @@
+
+
 var fetchStanding = (category) => {
 
     if(!category) category = 'MotoGP'
+
+    var loadingElement = document.querySelector('.loading-indicator'); 
+    loadingElement.innerHTML = `<img src="https://www.motogp.com/resources/v7.7.1/i/svg-files/elements/motogp-logo.svg" class="icon loading-indicator__icon"/>
+                    <span class="loading-indicator__text">
+                    LOADING
+                </span>`;
 
     fetch(`https://motogp.onrender.com/api/riders/getByCategory?category=${category}`)
     .then(response => response.json())
     .then(data => {
         console.log(data)
+        loadingElement.innerHTML = ''
+
         var body =  document.querySelector('.results-table__tbody');
         var errorContainer =  document.querySelector('.error-container')
 

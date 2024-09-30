@@ -1,0 +1,54 @@
+
+.container {
+    background-attachment: fixed;
+    background-color: #999;
+    background-image: url(https://static.dorna.com/sso-front/img/background_sso.f550572.jpg);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 97vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0,0.3);
+    background-color: #fff;
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"]
+ {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #ef3340;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
