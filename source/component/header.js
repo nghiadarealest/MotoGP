@@ -1,6 +1,6 @@
 
-var headerH = () => {
-    var header =  document.querySelector('.header');
+let headerH = () => {
+    let header =  document.querySelector('.header');
 
     header.innerHTML = `
     <div class="main-navigation">
@@ -55,11 +55,18 @@ var headerH = () => {
         
     </div>`
 
-    var username =  document.querySelector('.sso--main-bar');
+    let username =  document.querySelector('.sso--main-bar');
 
     if(localStorage.getItem('username')) {
         username.innerHTML = `<span class="username">${localStorage.getItem('username')}</span> 
-                                <i class="ti-drupal icon"></i>`
+                                 <i class="ti-shift-right icon"></i>`
+        let logout =  document.querySelector('.ti-shift-right');
+        logout.addEventListener('click', () => {
+            localStorage.removeItem('username');
+            localStorage.removeItem('password');
+            location.reload()
+        })
+        
     } else {
         username.innerHTML = `
         <a href="/source/pages/login.html" class="sso__login-button">
@@ -75,7 +82,7 @@ var headerH = () => {
                 </a>`
     }
 
-    var list =  document.querySelector('.main-navigation__menu-list');
+    let list =  document.querySelector('.main-navigation__menu-list');
 
     if(localStorage.getItem('username') == 'admin') {
         list.innerHTML += ` <li class="main-navigation__item     ">

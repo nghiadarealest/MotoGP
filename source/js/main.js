@@ -66,9 +66,9 @@ teamMenuItems.forEach(teamMenuItem => {
 // result 
 primaryFilters.forEach(primaryFilter => {
     primaryFilter.addEventListener('change', function(e) {
-        var calendarId = $('.primary-filter__filter-select--event').value
-        var category = $('.primary-filter__filter-select--cat').value
-        var session = $('.primary-filter__filter-select--session').value
+        let calendarId = $('.primary-filter__filter-select--event').value
+        let category = $('.primary-filter__filter-select--cat').value
+        let session = $('.primary-filter__filter-select--session').value
 
         if(primaryFilter.className.includes("primary-filter__filter-select--event")) {
             calendarId = e.target.value

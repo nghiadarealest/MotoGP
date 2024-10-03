@@ -267,6 +267,6 @@ button:hover {
 }
 
 .sso--main-bar i {
+    cursor: pointer;
     font-size: 1rem;
-
 }

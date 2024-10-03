@@ -2,6 +2,7 @@ import {fetchCalendar, updateCalendar, deleteCalendar, addCalendar} from '../api
 import {fetchCountry,addCountry,deleteCountry,updateCountry} from '../api/admin/country/country.js'
 import {addTeam,deleteTeam,fetchTeam,updateTeam,fetchTeamByCategory} from '../api/admin/team/team.js'
 import {addRider,deleteRider,fetchRider,updateRider, fetchRiderByCategory} from '../api/admin/rider/rider.js'
+import {addCalendarRider,deleteCalendarRider,fetchCalendarRider} from '../api/admin/calendarRider/calendarRider.js'
 
 
 const $ = document.querySelector.bind(document)
@@ -15,6 +16,7 @@ const tbody = $('.table> tbody')
 const modalAdd = $('.modal-add')
 const addButton = $('.add-button')
 const modalFooter = $('.modal-footer')
+const filter = $('.filter')
 
 
 textNavs.forEach(async(textNav) => {
@@ -29,7 +31,10 @@ textNavs.forEach(async(textNav) => {
         breadcrumb.innerHTML = this.textContent;
 
         $('.navbar-toggler').click()
-        var func
+        let func
+
+        filter.innerHTML = ''
+        addButton.style.display='block'
 
         switch(this.textContent) {
             case 'Calendar':
@@ -55,6 +60,12 @@ textNavs.forEach(async(textNav) => {
                 func = showRiderAddModal
                 handleAddFilterRider()
                 break;
+            case 'Calendar&Rider':
+                await fetchCalendarRiderTable()
+                handleAddFilterCalendarRider()
+                addButton.style.display='none'
+                func = () => {modalAdd.innerHTML=``}
+                break;
             default:
           }
 
@@ -68,9 +79,12 @@ textNavs.forEach(async(textNav) => {
 const fetchCalendarTable = async() => {
     try {
 
-        var data = await fetchCalendar();
-        if(data.length == 0) return; 
-
+        let data = await fetchCalendar();
+        if(data.length == 0) {
+            thead.innerHTML=``
+            tbody.innerHTML=``
+            return
+        }; 
         console.log(data)
 
         thead.innerHTML= `
@@ -87,8 +101,8 @@ const fetchCalendarTable = async() => {
 
         tbody.innerHTML = ''
         data.forEach((el,index) => {
-            var startDate = new Date(el.startDate);
-            var endDate = new Date(el.endDate);
+            let startDate = new Date(el.startDate);
+            let endDate = new Date(el.endDate);
             tbody.innerHTML += `
               <tr class="${el._id}">
                 <th scope="row">${index +1}</th>
@@ -144,8 +158,8 @@ const fetchCalendarTable = async() => {
 }
 
 const showCalendarUpdateModal = async(el) => {
-    var startDate = new Date(el.startDate);
-    var endDate = new Date(el.endDate);
+    let startDate = new Date(el.startDate);
+    let endDate = new Date(el.endDate);
 
     document.getElementById(`${el._id}`).innerHTML = `
             <div class="modal-dialog modal-lg">
@@ -210,7 +224,7 @@ const showCalendarUpdateModal = async(el) => {
             `
 
     const selectCountry = $$('.select-country')
-    var dataCountry = await fetchCountry();
+    let dataCountry = await fetchCountry();
     dataCountry.forEach((e,index) => {
         selectCountry.forEach(s => {
             s.innerHTML += `
@@ -231,7 +245,7 @@ const showCalendarUpdateModal = async(el) => {
 
     const saveData = $('.save-data')
     saveData.addEventListener("click", async(e) => {
-        var isUpdate = await updateCalendar({
+        let isUpdate = await updateCalendar({
             id: el._id,
             title: $('.c-title').value,
             location: $('.c-location').value, 
@@ -305,7 +319,7 @@ const showCalendarAddModal = async() => {
     modalFooter.innerHTML =`<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-outline-info add-data-calendar" data-bs-dismiss="modal">Save</button>`
     const selectCountry = $$('.select-country')
-    var dataCountry = await fetchCountry();
+    let dataCountry = await fetchCountry();
     dataCountry.forEach((e,index) => {
         selectCountry.forEach(s => {
             s.innerHTML += `
@@ -319,7 +333,7 @@ const showCalendarAddModal = async() => {
 }
 
 const handleAddCalendar = async(e) => {
-    var isAdd = await addCalendar({
+    let isAdd = await addCalendar({
         title: $('.c-title').value,
         location: $('.c-location').value, 
         startDate: $('.c-start').value, 
@@ -343,8 +357,12 @@ const handleAddCalendar = async(e) => {
 const fetchCountryTable = async() => {
     try {
 
-        var data = await fetchCountry();
-        if(data.length == 0) return; 
+        let data = await fetchCountry();
+        if(data.length == 0) {
+            thead.innerHTML=``
+            tbody.innerHTML=``
+            return
+        }; 
 
         console.log(data)
 
@@ -445,7 +463,7 @@ const showCountryUpdateModal = async(el) => {
 
     const saveData = $('.save-data')
     saveData.addEventListener("click", async(e) => {
-        var isUpdate = await updateCountry({
+        let isUpdate = await updateCountry({
             id: el._id,
             name: $('.c-name').value,
             image: $('.c-image').value, 
@@ -483,7 +501,7 @@ const showCountryAddModal = async() => {
 }
 
 const handleAddCountry = async(e) => {
-    var isAdd = await addCountry({
+    let isAdd = await addCountry({
         name: $('.c-name').value,
         image: $('.c-image').value, 
     }); 
@@ -499,14 +517,17 @@ const handleAddCountry = async(e) => {
 //Team 
 const fetchTeamTable = async(category) => {
     try {
-        var data
+        let data
         if(category) {
             data = await fetchTeamByCategory(category);
         } else {
             data = await fetchTeamByCategory($('.filter-category')?.value || 'MotoGP');
         }
-        if(data.length == 0) return; 
-
+        if(data.length == 0) {
+            thead.innerHTML=``
+            tbody.innerHTML=``
+            return
+        }; 
         console.log(data)
 
         thead.innerHTML= `
@@ -632,7 +653,7 @@ const showTeamUpdateModal = async(el) => {
 
     const saveData = $('.save-data')
     saveData.addEventListener("click", async(e) => {
-        var isUpdate = await updateTeam({
+        let isUpdate = await updateTeam({
             id: el._id,
             name: $('.c-name').value,
             image: $('.c-image').value,
@@ -688,7 +709,7 @@ const showTeamAddModal = async() => {
 }
 
 const handleAddTeam = async(e) => {
-    var isAdd = await addTeam({
+    let isAdd = await addTeam({
         name: $('.c-name').value,
         image: $('.c-image').value, 
         category: $('.select-category').value,
@@ -729,13 +750,17 @@ const handleAddFilterTeam = async() => {
 // rider
 const fetchRiderTable = async(category) => {
     try {
-        var data
+        let data
         if(category){
             data = await fetchRiderByCategory(category);
         } else {
             data = await fetchRiderByCategory($('.filter-category')?.value || 'MotoGP');
         }
-        if(data.length == 0) return; 
+        if(data.length == 0) {
+            thead.innerHTML=``
+            tbody.innerHTML=``
+            return
+        };  
 
         console.log(data)
 
@@ -808,8 +833,8 @@ const fetchRiderTable = async(category) => {
 }
 
 const showRiderUpdateModal = async(el) => {
-    var startDate = new Date(el.startDate);
-    var endDate = new Date(el.endDate);
+    let startDate = new Date(el.startDate);
+    let endDate = new Date(el.endDate);
 
     document.getElementById(`${el._id}`).innerHTML = `
             <div class="modal-dialog modal-lg">
@@ -877,7 +902,7 @@ const showRiderUpdateModal = async(el) => {
             `
 
     const selectCountry = $$('.select-country')
-    var dataCountry = await fetchCountry();
+    let dataCountry = await fetchCountry();
     dataCountry.forEach((e,index) => {
         selectCountry.forEach(s => {
             s.innerHTML += `
@@ -889,7 +914,7 @@ const showRiderUpdateModal = async(el) => {
     const selectCategorys = $$('.select-category ')
     selectCategorys.forEach((selectCategory,index) => {
         selectCategory.addEventListener('change', async() =>{
-            var dataTeam = await fetchTeamByCategory($('.c-category').value);
+            let dataTeam = await fetchTeamByCategory($('.c-category').value);
             const selectTeams = $$('.select-team');
             selectTeams.forEach((selectTeam, i) => {
                 if(index == i){
@@ -907,7 +932,7 @@ const showRiderUpdateModal = async(el) => {
    
 
     const selectTeam = $$('.select-team');
-    var dataTeam = await fetchTeamByCategory($('.c-category').value);
+    let dataTeam = await fetchTeamByCategory($('.c-category').value);
     dataTeam.forEach((e,index) => {
         selectTeam.forEach(s => {
             s.innerHTML += `
@@ -942,7 +967,7 @@ const showRiderUpdateModal = async(el) => {
 
     const saveData = $('.save-data')
     saveData.addEventListener("click", async(e) => {
-        var isUpdate = await updateRider({
+        let isUpdate = await updateRider({
             id: el._id,
             name: $('.c-name').value,
             hashtag: $('.c-hashtag').value, 
@@ -1020,7 +1045,7 @@ const showRiderAddModal = async() => {
                     <button type="button" class="btn btn-outline-info add-data-rider" data-bs-dismiss="modal">Save</button>`
     
     const selectCountry = $$('.select-country')
-    var dataCountry = await fetchCountry();
+    let dataCountry = await fetchCountry();
     dataCountry.forEach((e,index) => {
         selectCountry.forEach(s => {
             s.innerHTML += `
@@ -1033,7 +1058,7 @@ const showRiderAddModal = async() => {
     selectCategory.addEventListener('change', async() =>{
         const selectTeam = $('.select-team');
         selectTeam.innerHTML=''
-        var dataTeam = await fetchTeamByCategory($('.c-category').value);
+        let dataTeam = await fetchTeamByCategory($('.c-category').value);
         dataTeam.forEach((e,index) => {
             selectTeam.innerHTML += `
             <option value="${e._id}">${e.name}</option>
@@ -1042,7 +1067,7 @@ const showRiderAddModal = async() => {
     })
 
     const selectTeam = $$('.select-team');
-    var dataTeam = await fetchTeamByCategory($('.c-category').value);
+    let dataTeam = await fetchTeamByCategory($('.c-category').value);
     dataTeam.forEach((e,index) => {
         selectTeam.forEach(s => {
             s.innerHTML += `
@@ -1056,7 +1081,7 @@ const showRiderAddModal = async() => {
 }
 
 const handleAddRider = async(e) => {
-    var isAdd = await addRider({
+    let isAdd = await addRider({
         name: $('.c-name').value,
         hashtag: $('.c-hashtag').value, 
         number: $('.c-number').value, 
@@ -1099,6 +1124,296 @@ const handleAddFilterRider = async() => {
     })
 }
 
+//Calendar&Rider
+const fetchCalendarRiderTable = async(category,session,calendarId) => {
+    try {
+        let data
+        if(category && session && calendarId){
+            data = await fetchCalendarRider(calendarId,session,category);
+        } else {
+            data = await fetchCalendarRider($('.filter-calendar')?.value || "66f170e0dc1fa1dd4a86f419",$('.filter-session')?.value || "RAC",$('.filter-category')?.value || 'MotoGP');
+        }
+        if(data.length == 0) {
+            thead.innerHTML=``
+            tbody.innerHTML=``
+            return
+        }; 
+
+        console.log(data)
+
+        thead.innerHTML= `
+            <tr>
+            <th scope="col " class="col-add" style="cursor: pointer">+</th>
+            <th scope="col">Title</th>
+            <th scope="col">Category</th>
+            <th scope="col">Session</th>
+            </tr>
+        `
+
+        tbody.innerHTML = ''
+        let subTable = ``
+        data.forEach((el,index) => {
+            tbody.innerHTML += `
+              <tr class="${el._id}">
+                <th scope="row">${index +1}</th>
+                <td>${el.calendarId.title}</td>
+                <td>${el.category}</td>
+                <td>${el.session}</td>
+              </tr>
+            `
+            subTable+= `<div class="table-rider">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Hashtag</th>
+                                <th scope="col">TimeFinish</th>
+                                <th scope="col">Point</th>
+                            </tr>
+                    `
+            el.riders.forEach((r,index) => {
+                subTable += `
+                    <tr class="${r._id}">
+                        <th scope="row">${index +1}</th>
+                        <td>${r.riderId.name}</td>
+                        <td>${r.riderId.hashtag}</td>
+                        <td>${r.timeFinish}</td>
+                        <td>${r.point}</td>
+                    </tr>
+                `
+            })
+
+            subTable += ` 
+                    </div>
+                    `
+            tbody.innerHTML +=subTable
+        })
+
+        // const deleteButton = $$('.delete-button')
+
+        // data.forEach((el, index) =>{
+        //     deleteButton[index].addEventListener("click", async(e) => {
+        //         // await deleteCalendarRider(el._id)
+        //         await fetchCalendarRiderTable();
+        //     })
+        // })
+              
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+// const showCalendarRiderAddModal = async() => {
+//     modalAdd.innerHTML = `
+//         <form class="row">
+//         <div class="row-calendarrider">
+//             <div class="row">
+//                 <div class="col-md-4">
+//                     <label class="form-label">Category</label>
+//                     <select class="form-select select-category">
+                        
+//                         <option value="MotoGP">MotoGP</option>
+//                         <option value="Moto2">Moto2</option>
+//                         <option value="Moto3">Moto3</option>
+//                         <option value="MotoE">MotoE</option>
+//                     </select>
+//                 </div>
+//                 <div class="col-md-4">
+//                     <label class="form-label">Session</label>
+//                     <select class="form-select select-session">
+//                         <option  value="RAC">RAC</option>
+//                         <option  value="PR">PR</option>
+//                         <option  value="WUP">WUP</option>
+//                         <option  value="SPR">SPR</option>
+//                         <option  value="Q2">Q2</option>
+//                         <option  value="Q1">Q1</option>
+//                         <option  value="FP2">FP2</option>
+//                         <option  value="FP1">FP1</option>
+//                     </select>
+//                 </div>
+//                 <div class="col-md-4">
+//                     <label class="form-label">Calendar</label>
+//                     <select class="form-select select-calendar">
+//                     </select>
+//                 </div>
+//             </div>
+//             <div class="row list-rider"> 
+//                 <div class="col-md-4">
+//                     <label class="form-label">Rider</label>
+//                     <select class="form-select select-rider" style="margin: 10px 0;">
+//                     </select>
+//                 </div>
+//                 <div class="col-md-6">
+//                     <label class="form-label">TimeFinish</label>
+//                     <div class="input-group">
+//                         <input type="number" class="form-control" placeholder="mm" maxlength="2">
+//                         <span class="input-group-text">:</span>
+//                         <input type="number" class="form-control" placeholder="ss" maxlength="2">
+//                         <span class="input-group-text">.</span>
+//                         <input type="number" class="form-control" placeholder="ooo" maxlength="3">
+//                     </div>
+//                 </div>
+//                 <div class="col-md-2" style="margin: 40px 0 0;">
+//                     <button type="button" class="btn btn-outline-info add-data-newrider">Add</button>
+//                 </div>
+//             </div>
+//         </div>
+
+//         </form>
+//             `
+//     modalFooter.innerHTML =`<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+//                     <button type="button" class="btn btn-outline-info add-data-calendarrider" data-bs-dismiss="modal">Save</button>`
+    
+//     const filterCalendar = $('.select-calendar')
+//     const dataCalendar = await fetchCalendar();
+//     dataCalendar.forEach(e => {
+//         filterCalendar.innerHTML +=`
+//             <option  value="${e._id}">${e.title}</option>
+//         `
+//     }) 
+
+//     handleFillDataSelectRider()
+
+//     $('.select-category').addEventListener('change', async() => {
+//         const dataRiderC = await fetchRiderByCategory($('.select-category').value);
+//         filterRider.innerHTML = '';
+//         dataRiderC.forEach(e => {
+//         filterRider.innerHTML +=`
+//             <option  value="${e._id}">${e.name}</option>
+//         `
+//     }) 
+//     })
+
+//     buttonAdd = $('.add-data-newrider')
+//     buttonAdd.addEventListener('click', (e) => {
+//         e.preventDefault()
+//         handleAddInputRider()
+//     })
+
+//     rowCalendarRider = $('.row-calendarrider')
+
+    
+//     const addData = $('.add-data-calendarrider')
+//     if(addData) addData.addEventListener("click", handleAddCalendarRider);
+// }
+
+// const handleAddCalendarRider = async(e) => {
+//     let isAdd = await addCalendarRider({
+//         name: $('.c-name').value,
+//         hashtag: $('.c-hashtag').value, 
+//         number: $('.c-number').value, 
+//         category: $('.c-category').value, 
+//         countryId: $('.c-country').value, 
+//         teamId: $('.c-team').value, 
+//         image: $('.c-image').value, 
+//         point: $('.c-point').value
+//     }); 
+
+//     if(isAdd) {
+//         alert('Data added successfully')
+//         await fetchRiderTable()
+//         // modal.hide();
+//     } else {
+//         alert('Data added failed')
+//     }
+// }
+
+const handleAddFilterCalendarRider = async() => {
+    const filter = $('.filter')
+    filter.innerHTML = ''
+
+    filter.innerHTML = `
+    <div class="row">
+    <div class="col-md-2">
+        <label class="form-label">Category</label>
+        <select class="form-select filter-category">
+            
+            <option value="MotoGP">MotoGP</option>
+            <option value="Moto2">Moto2</option>
+            <option value="Moto3">Moto3</option>
+            <option value="MotoE">MotoE</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label class="form-label">Session</label>
+        <select class="form-select filter-session">
+            <option  value="RAC">RAC</option>
+            <option  value="PR">PR</option>
+            <option  value="WUP">WUP</option>
+            <option  value="SPR">SPR</option>
+            <option  value="Q2">Q2</option>
+            <option  value="Q1">Q1</option>
+            <option  value="FP2">FP2</option>
+            <option  value="FP1">FP1</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Calendar</label>
+        <select class="form-select filter-calendar">
+        </select>
+    </div>
+    </div>
+    `
+    const filterSession = $('.filter-session')
+    filterSession.addEventListener('change', async() => {
+        fetchCalendarRiderTable(filterCategory.value)
+    })
+
+    const filterCalendar = $('.filter-calendar')
+    const dataCalendar = await fetchCalendar();
+    dataCalendar.forEach(e => {
+        filterCalendar.innerHTML +=`
+            <option  value="${e._id}">${e.title}</option>
+        `
+    }) 
+    filterCalendar.addEventListener('change', async() => {
+        fetchCalendarRiderTable(filterCategory.value)
+    })
+
+    const filterCategory = $('.filter-category')
+    filterCategory.addEventListener('change', async() => {
+        fetchCalendarRiderTable(filterCategory.value)
+    })
+}
+
+// const handleAddInputRider = () => {
+//     buttonAdd.addEventListener('click', () => {
+
+//         rowCalendarRider.innerHTML += `
+//             <div class="row list-rider"> 
+//                 <div class="col-md-4">
+//                     <select class="form-select select-rider" style="margin: 10px 0;">
+//                     </select>
+//                 </div>
+//                 <div class="col-md-6">
+//                     <div class="input-group">
+//                         <input type="number" class="form-control" placeholder="mm" maxlength="2">
+//                         <span class="input-group-text">:</span>
+//                         <input type="number" class="form-control" placeholder="ss" maxlength="2">
+//                         <span class="input-group-text">.</span>
+//                         <input type="number" class="form-control" placeholder="ooo" maxlength="3">
+//                     </div>
+//                 </div>
+//             </div>
+//         `
+//         handleAddInputRider()
+//         handleFillDataSelectRider()
+//     })
+
+// }
+
+// const handleFillDataSelectRider = async() => {
+//     const filterRiders = $$('.select-rider')
+//     const dataRider = await fetchRiderByCategory($('.select-category').value);
+//     filterRiders.forEach((r,index) => {
+//         r.innerHTML = '';
+//         dataRider.forEach(e => {
+//             r.innerHTML +=`
+//             <option  value="${e._id}">${e.name}</option>
+//         `
+//         })
+        
+//     }) 
+// }
 // start 
 await fetchCalendarTable()
 modalAdd.innerHTML=''
