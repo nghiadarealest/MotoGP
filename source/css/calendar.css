@@ -67,7 +67,7 @@
     order: 1;
 }
 
-.calendar-listing__event-container--finished .calendar-listing__status-bar {
+.calendar-listing__status-bar {
     background-color: #000;
     color: #fff;
 }
@@ -84,7 +84,7 @@
     order: 3;
 }
 
-.calendar-listing__event-container--finished .calendar-listing__status-icon {
+ .calendar-listing__status-icon {
     background-image: url("https://www.motogp.com/resources/v7.7.1/i/svg-files/elements/event-finished.svg");
 }
 

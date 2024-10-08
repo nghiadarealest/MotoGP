@@ -1,0 +1,237 @@
+.default-template {
+    background: #f4f4f4;
+    margin-top: 145px;
+}
+
+.event-hero {
+    width: auto;
+    background-color: #000;
+    padding: 0 1.6rem;
+    min-height: 42.9rem;
+    display: flex;
+}
+
+@media (min-width: 52.5em) {
+    .event-hero {
+        position: relative;
+        min-height: 27.5rem;
+    }
+}
+
+.event-hero__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    width: 100%;
+}
+
+@media (min-width: 52.5em) {
+    .event-hero__wrapper {
+        margin: 3rem 0 1.6rem;
+    }
+}
+
+.event-hero__background {
+    min-height: 21rem;
+    margin-inline: -1.6rem;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    margin-bottom: clamp(-30rem, 6.848rem - 43.87vw, -9.6rem);
+    z-index: 10;
+}
+
+@media (min-width: 52.5em) {
+    .event-hero__background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        aspect-ratio: 16 / 5;
+    }
+}
+@media (min-width: 52.5em) {
+    .event-hero__background {
+        margin-bottom: 0;
+        margin-inline: unset;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.event-hero__background:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(0deg, rgba(0, 0, 0, .78), hsla(0, 0%, 100%, .06));
+    z-index: 1;
+}
+
+.u-observed {
+    min-width: .1rem;
+    min-height: .1rem;
+}
+
+.object-fit-cover-picture__img, .object-fit-cover-video__iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: center;
+    font-family: "object-fit: cover; object-position: center";
+}
+
+.event-hero__background:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, .8392156863) 15.22%, hsla(0, 0%, 100%, .05) 72.53%);
+}
+
+.event-hero__info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    z-index: 100;
+}
+
+@media (min-width: 52.5em) {
+    .event-hero__info-wrapper {
+        gap: 2rem;
+    }
+}
+
+.event-hero__info-kind-wrapper {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+.event-hero__info-kind {
+    overflow: hidden;
+    display: flex;
+    border-radius: .4rem 0 0 .4rem;
+    position: relative;
+    align-items: center;
+    z-index: 1;
+    min-width: 5rem;
+}
+
+.event-hero__info-kind:before {
+    content: "";
+    position: absolute;
+    background-color: #c80502;
+    width: 100%;
+    height: 100%;
+    left: -.85rem;
+    z-index: -1;
+    border-radius: 0 0 .5rem;
+    transform: skew(-30deg);
+}
+
+.event-hero__info-kind-txt {
+    font-size: 1.8rem;
+    line-height: 1.11;
+    margin-bottom: .2rem;
+    color: #fff;
+    padding: .3rem 2rem .3rem 1rem;
+    letter-spacing: -.02em;
+}
+
+.event-hero__info-date {
+    color: #fff;
+    line-height: 1.35;
+    font-size: 1.6rem;
+    letter-spacing: -.04em;
+}
+
+.event-hero__info-title {
+    line-height: 1;
+    font-size: 2rem;
+    color: #fff;
+    letter-spacing: -.04em;
+    width: 80%;
+}
+
+.event-hero__info-circuit {
+    line-height: 1;
+    font-size: 1.2rem;
+    color: #dadbe0;
+    display: flex;
+    gap: .4rem;
+    align-items: center;
+}
+
+.event-hero__info-circuit-flag {
+    width: 2.2rem;
+}
+
+.event-hero__info-circuit-flag img {
+    object-fit: cover;
+    border-radius: .4rem;
+}
+
+.event-hero__info-circuit-name {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.event-hero__info-promo, .event-hero__info-promo-sponsor {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+
+.event-hero__info-promo-hashtag {
+    line-height: 1.16;
+    font-size: 1rem;
+    background-color: #616161;
+    color: #ededed;
+    padding: .4rem 1.2rem;
+    letter-spacing: .12em;
+    display: inline-block;
+    border-radius: 1.2rem;
+}
+
+.event-hero__info-promo-sponsor-txt {
+    line-height: 1.16;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #dadbe0;
+    opacity: .8;
+    letter-spacing: .1em;
+}
+
+.event-hero__info-promo-sponsor-icon__wrapper {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    width: 4.5rem;
+    height: 2.5rem;
+    background-image: url("https://www.motogp.com/resources/v7.8.0/i/svg-files/elements/sponsor-qatar.svg");
+}
+
+.event-hero__ctas-wrapper {
+    display: flex;
+    gap: .4rem;
+    z-index: 100;
+}
+
+.event-hero__ctas-btn {
+    font-size: 1rem;
+    line-height: .92;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: #c80502;
+    min-width: 9.1rem;
+    border-radius: .4rem;
+    padding: 1.3rem 1.6rem;
+    text-align: center;
+}
+

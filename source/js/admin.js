@@ -63,8 +63,7 @@ textNavs.forEach(async(textNav) => {
             case 'Calendar&Rider':
                 await fetchCalendarRiderTable()
                 handleAddFilterCalendarRider()
-                addButton.style.display='none'
-                func = () => {modalAdd.innerHTML=``}
+                func = showCalendarRiderAddModal
                 break;
             default:
           }
@@ -1159,6 +1158,9 @@ const fetchCalendarRiderTable = async(category,session,calendarId) => {
                 <td>${el.calendarId.title}</td>
                 <td>${el.category}</td>
                 <td>${el.session}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger delete-button" data-bs-toggle="modal" data-bs-target="#delete${el._id}">Delete</button>
+                </td>
               </tr>
             `
             subTable+= `<div class="table-rider">
@@ -1188,134 +1190,194 @@ const fetchCalendarRiderTable = async(category,session,calendarId) => {
             tbody.innerHTML +=subTable
         })
 
-        // const deleteButton = $$('.delete-button')
+        const deleteButton = $$('.delete-button')
 
-        // data.forEach((el, index) =>{
-        //     deleteButton[index].addEventListener("click", async(e) => {
-        //         // await deleteCalendarRider(el._id)
-        //         await fetchCalendarRiderTable();
-        //     })
-        // })
+        data.forEach((el, index) =>{
+            deleteButton[index].addEventListener("click", async(e) => {
+                await deleteCalendarRider(el._id)
+                await fetchCalendarRiderTable();
+            })
+        })
               
     } catch (error) {
         console.log(error)
     }
 }
 
-// const showCalendarRiderAddModal = async() => {
-//     modalAdd.innerHTML = `
-//         <form class="row">
-//         <div class="row-calendarrider">
-//             <div class="row">
-//                 <div class="col-md-4">
-//                     <label class="form-label">Category</label>
-//                     <select class="form-select select-category">
+const showCalendarRiderAddModal = async() => {
+    modalAdd.innerHTML = `
+        <form class="row">
+        <div class="row-calendarrider">
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="form-label">Category</label>
+                    <select class="form-select select-category c-category">
                         
-//                         <option value="MotoGP">MotoGP</option>
-//                         <option value="Moto2">Moto2</option>
-//                         <option value="Moto3">Moto3</option>
-//                         <option value="MotoE">MotoE</option>
-//                     </select>
-//                 </div>
-//                 <div class="col-md-4">
-//                     <label class="form-label">Session</label>
-//                     <select class="form-select select-session">
-//                         <option  value="RAC">RAC</option>
-//                         <option  value="PR">PR</option>
-//                         <option  value="WUP">WUP</option>
-//                         <option  value="SPR">SPR</option>
-//                         <option  value="Q2">Q2</option>
-//                         <option  value="Q1">Q1</option>
-//                         <option  value="FP2">FP2</option>
-//                         <option  value="FP1">FP1</option>
-//                     </select>
-//                 </div>
-//                 <div class="col-md-4">
-//                     <label class="form-label">Calendar</label>
-//                     <select class="form-select select-calendar">
-//                     </select>
-//                 </div>
-//             </div>
-//             <div class="row list-rider"> 
-//                 <div class="col-md-4">
-//                     <label class="form-label">Rider</label>
-//                     <select class="form-select select-rider" style="margin: 10px 0;">
-//                     </select>
-//                 </div>
-//                 <div class="col-md-6">
-//                     <label class="form-label">TimeFinish</label>
-//                     <div class="input-group">
-//                         <input type="number" class="form-control" placeholder="mm" maxlength="2">
-//                         <span class="input-group-text">:</span>
-//                         <input type="number" class="form-control" placeholder="ss" maxlength="2">
-//                         <span class="input-group-text">.</span>
-//                         <input type="number" class="form-control" placeholder="ooo" maxlength="3">
-//                     </div>
-//                 </div>
-//                 <div class="col-md-2" style="margin: 40px 0 0;">
-//                     <button type="button" class="btn btn-outline-info add-data-newrider">Add</button>
-//                 </div>
-//             </div>
-//         </div>
+                        <option value="MotoGP">MotoGP</option>
+                        <option value="Moto2">Moto2</option>
+                        <option value="Moto3">Moto3</option>
+                        <option value="MotoE">MotoE</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Session</label>
+                    <select class="form-select select-session c-session">
+                        <option  value="RAC">RAC</option>
+                        <option  value="PR">PR</option>
+                        <option  value="WUP">WUP</option>
+                        <option  value="SPR">SPR</option>
+                        <option  value="Q2">Q2</option>
+                        <option  value="Q1">Q1</option>
+                        <option  value="FP2">FP2</option>
+                        <option  value="FP1">FP1</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Calendar</label>
+                    <select class="form-select select-calendar c-calendar">
+                    </select>
+                </div>
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control c-riders" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" 
+        >
+        [{
+            "riderId": "66f0e6db06bdea6aa9ed23a3", 
+            "timeFinish": "01:51.111"
+        }, 
+        {
+            "riderId": "66f0e44806bdea6aa9ed2397", 
+            "timeFinish": "01:51.116"
+        },
+        {
+            "riderId": "66f0eadd06bdea6aa9ed23b9", 
+            "timeFinish": "01:51.121"
+        },
+        {
+            "riderId": "66f0e82206bdea6aa9ed23ab", 
+            "timeFinish": "01:51.112"
+        }, 
+        {
+            "riderId": "66f0e95606bdea6aa9ed23b1", 
+            "timeFinish": "01:51.122"
+        },
+        {
+            "riderId": "66f0eb0506bdea6aa9ed23bb", 
+            "timeFinish": "01:51.222"
+        },
+        {
+            "riderId": "66f0eb6a06bdea6aa9ed23bd", 
+            "timeFinish": "01:51.232"
+        },
+        {
+            "riderId": "66f0ea6e06bdea6aa9ed23b7", 
+            "timeFinish": "01:51.332"
+        },
+        {
+            "riderId": "66f0ea1c06bdea6aa9ed23b5", 
+            "timeFinish": "01:51.432"
+        },
+        {
+            "riderId": "66f0eb8d06bdea6aa9ed23bf", 
+            "timeFinish": "01:51.532"
+        },
+        {
+            "riderId": "66f0e33f06bdea6aa9ed2395", 
+            "timeFinish": "01:51.592"
+        },
+        {
+            "riderId": "66f0e4c806bdea6aa9ed2399", 
+            "timeFinish": "01:51.612"
+        },
+        {
+            "riderId": "66f0e87806bdea6aa9ed23ad", 
+            "timeFinish": "01:51.662"
+        },
+         {
+            "riderId": "66f0e5d106bdea6aa9ed239d", 
+            "timeFinish": "01:51.762"
+        },
+         {
+            "riderId": "66f0e55d06bdea6aa9ed239b", 
+            "timeFinish": "01:51.782"
+        },
+        {
+            "riderId": "66f0e61b06bdea6aa9ed239f", 
+            "timeFinish": "01:51.812"
+        },
+        {
+            "riderId": "66f0e73e06bdea6aa9ed23a5", 
+            "timeFinish": "01:51.872"
+        },
+         {
+            "riderId": "66f0e78906bdea6aa9ed23a7", 
+            "timeFinish": "01:52.172"
+        },
+         {
+            "riderId": "66f0e8db06bdea6aa9ed23af", 
+            "timeFinish": "01:52.192"
+        },
+         {
+            "riderId": "66f0e7e006bdea6aa9ed23a9", 
+            "timeFinish": "01:52.492"
+        },
+         {
+            "riderId": "66f0eb0506bdea6aa9ed23bb", 
+            "timeFinish": "01:52.682"
+        },
+         {
+            "riderId": "66f0e99f06bdea6aa9ed23b3", 
+            "timeFinish": "01:53.182"
+        }]</textarea>
+                <label for="floatingTextarea2" >Result</label>
+            </div>
+        </div>
 
-//         </form>
-//             `
-//     modalFooter.innerHTML =`<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-//                     <button type="button" class="btn btn-outline-info add-data-calendarrider" data-bs-dismiss="modal">Save</button>`
+        </form>
+            `
+    modalFooter.innerHTML =`<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-info add-data-calendarrider" data-bs-dismiss="modal">Save</button>`
     
-//     const filterCalendar = $('.select-calendar')
-//     const dataCalendar = await fetchCalendar();
-//     dataCalendar.forEach(e => {
-//         filterCalendar.innerHTML +=`
-//             <option  value="${e._id}">${e.title}</option>
-//         `
-//     }) 
+    const filterCalendar = $('.select-calendar')
+    const dataCalendar = await fetchCalendar();
+    dataCalendar.forEach(e => {
+        filterCalendar.innerHTML +=`
+            <option  value="${e._id}">${e.title}</option>
+        `
+    }) 
 
-//     handleFillDataSelectRider()
+    // handleFillDataSelectRider()
 
-//     $('.select-category').addEventListener('change', async() => {
-//         const dataRiderC = await fetchRiderByCategory($('.select-category').value);
-//         filterRider.innerHTML = '';
-//         dataRiderC.forEach(e => {
-//         filterRider.innerHTML +=`
-//             <option  value="${e._id}">${e.name}</option>
-//         `
-//     }) 
-//     })
+    $('.select-category').addEventListener('change', async() => {
+        const dataRiderC = await fetchRiderByCategory($('.select-category').value);
+        filterRider.innerHTML = '';
+        dataRiderC.forEach(e => {
+        filterRider.innerHTML +=`
+            <option  value="${e._id}">${e.name}</option>
+        `
+    }) 
+    })
 
-//     buttonAdd = $('.add-data-newrider')
-//     buttonAdd.addEventListener('click', (e) => {
-//         e.preventDefault()
-//         handleAddInputRider()
-//     })
+    const addData = $('.add-data-calendarrider')
+    if(addData) addData.addEventListener("click", handleAddCalendarRider);
+}
 
-//     rowCalendarRider = $('.row-calendarrider')
+const handleAddCalendarRider = async(e) => {
+    let isAdd = await addCalendarRider({
+        category: $('.c-category').value,
+        session: $('.c-session').value, 
+        calendarId: $('.c-calendar').value, 
+        riders: JSON.parse($('.c-riders').value), 
+    }); 
 
-    
-//     const addData = $('.add-data-calendarrider')
-//     if(addData) addData.addEventListener("click", handleAddCalendarRider);
-// }
-
-// const handleAddCalendarRider = async(e) => {
-//     let isAdd = await addCalendarRider({
-//         name: $('.c-name').value,
-//         hashtag: $('.c-hashtag').value, 
-//         number: $('.c-number').value, 
-//         category: $('.c-category').value, 
-//         countryId: $('.c-country').value, 
-//         teamId: $('.c-team').value, 
-//         image: $('.c-image').value, 
-//         point: $('.c-point').value
-//     }); 
-
-//     if(isAdd) {
-//         alert('Data added successfully')
-//         await fetchRiderTable()
-//         // modal.hide();
-//     } else {
-//         alert('Data added failed')
-//     }
-// }
+    if(isAdd) {
+        alert('Data added successfully')
+        await fetchCalendarRiderTable()
+        // modal.hide();
+    } else {
+        alert('Data added failed')
+    }
+}
 
 const handleAddFilterCalendarRider = async() => {
     const filter = $('.filter')
@@ -1414,6 +1476,8 @@ const handleAddFilterCalendarRider = async() => {
         
 //     }) 
 // }
+
+
 // start 
 await fetchCalendarTable()
 modalAdd.innerHTML=''

@@ -1,9 +1,9 @@
 
-var fetchCalendar = (year) => {
+let fetchCalendar = (year) => {
     if(!year) year = 2024
 
 
-    var loadingElement = document.querySelector('.loading-indicator'); 
+    let loadingElement = document.querySelector('.loading-indicator'); 
     loadingElement.innerHTML = `<img src="https://www.motogp.com/resources/v7.7.1/i/svg-files/elements/motogp-logo.svg" class="icon loading-indicator__icon"/>
                     <span class="loading-indicator__text">
                     LOADING
@@ -14,9 +14,9 @@ var fetchCalendar = (year) => {
         .then(data => {
             loadingElement.innerHTML = ''
             console.log(data)
-            var month;
-            var body =  document.querySelector('.calendar-listings__month');
-            var errorContainer =  document.querySelector('.error-container')
+            let month;
+            let body =  document.querySelector('.calendar-listings__month');
+            let errorContainer =  document.querySelector('.error-container')
 
             if(data.length == 0) {
                 errorContainer.innerHTML=`
@@ -37,34 +37,94 @@ var fetchCalendar = (year) => {
                     "July", "August", "September", "October", "November", "December"
                 ];
                 const monthNamesShort= ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                var startDate = new Date(e.startDate);
-                var endDate = new Date(e.endDate);
+                let startDate = new Date(e.startDate);
+                let endDate = new Date(e.endDate);
+                let now = new Date(Date.now())
+                let status = 'finish';
+                let html;
     
                 if(month != monthNames[startDate.getMonth()]) {
-                    body.innerHTML += `<div class="calendar-listings__month-title">
+                    html += `<div class="calendar-listings__month-title">
                          ${monthNames[startDate.getMonth()]}
                     </div>`
                 }
     
                 month = monthNames[startDate.getMonth()]
-    
-                body.innerHTML += `<ul class="calendar-listings__month-listings" value=${e._id}>
+
+                html += `<ul class="calendar-listings__month-listings" id=${e._id} style="cursor: pointer">
                 <li 
-                    class="calendar-listing__event-container js-event calendar-listing__event-container--finished "
+                    class="calendar-listing__event-container js-event"
                 >
                     <a class="calendar-listing__event" >
                         <div class="calendar-listing__status-container">
                             <div class="calendar-listing__status-type">
                                     GP${index+1}
-                            </div>
+                            </div>`
+
+                if(now.getMonth() > startDate.getMonth()) {
+                    // finish
+                    status = "finish"
+                    html += `
                             <div class="calendar-listing__status-bar">
                                 <div class="calendar-listing__status-icon"></div>
                                 <div class="calendar-listing__status-text">
                                     finished
                                 </div>
                             </div>
+                        </div>`
+                } else if(now.getMonth() == startDate.getMonth()) {
+                    if(now.getDate() > endDate.getDate()) {
+                        // finnish 
+                        status = "finish"
+                        html += `
+                            <div class="calendar-listing__status-bar">
+                                <div class="calendar-listing__status-icon"></div>
+                                <div class="calendar-listing__status-text">
+                                    finished
+                                </div>
+                            </div>
+                        </div>`
+                    } else if(now.getDate() > startDate.getDate() && now.getDate() < endDate.getDate()) {
+                        // live 
+                        status = "live"
+                        html += `
+                            <div class="calendar-listing__status-bar" style="background-color:#ff4343;">
+                                <div class="calendar-listing__status-icon" ></div>
+                                <div class="calendar-listing__status-text">
+                                    live
+                                </div>
+                            </div>
+                        </div>`
+                    } else if (now.getDate() < startDate.getDate()){
+                        // upcoming
+                        status = "upcoming"
+                        html += `
+                        <div class="calendar-listing__status-bar" style="background-color: #f9f9f9;
+                            color: #6d7279;
+                            border: .05rem solid hsla(215, 5%, 45%, .15);">
+                            <div class="calendar-listing__status-icon" style="background-image: url(${"https://www.motogp.com/resources/v7.8.0/i/svg-files/elements/event-upcoming.svg"});"></div>
+                            <div class="calendar-listing__status-text">
+                                upcoming
+                            </div>
                         </div>
-    
+                     </div>`
+                    }
+                } else if(now.getMonth() < startDate.getMonth()) {
+                    // upcoming
+                    status = "upcoming"
+                    html += `
+                        <div class="calendar-listing__status-bar" style="background-color: #f9f9f9;
+                            color: #6d7279;
+                            border: .05rem solid hsla(215, 5%, 45%, .15);">
+                            <div class="calendar-listing__status-icon" style="background-image: url(${"https://www.motogp.com/resources/v7.8.0/i/svg-files/elements/event-upcoming.svg"});"></div>
+                            <div class="calendar-listing__status-text">
+                                upcoming
+                            </div>
+                        </div>
+                     </div>`
+                } 
+
+                html += `
                         <div class="calendar-listing__information">
     
                             <div class="calendar-listing__details">
@@ -119,7 +179,21 @@ var fetchCalendar = (year) => {
                     </a>
                 </li>
                  </ul>`
+                
+                 body.innerHTML += html;
+
+                
             });
+
+            let calendars =  document.querySelectorAll('.calendar-listings__month-listings');
+            console.log(calendars)
+            calendars.forEach((ca) => {
+                ca.addEventListener('click', () => {
+                    localStorage.setItem("calendarId", ca.id);
+                    window.location.href = "/source//pages/detailCalendar.html";
+                 })
+            }) 
+                 
            
         })
         .catch(e => console.log(e))
