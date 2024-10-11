@@ -18,6 +18,10 @@ const addButton = $('.add-button')
 const modalFooter = $('.modal-footer')
 const filter = $('.filter')
 
+if(localStorage.getItem("username") !='admin') {
+    window.location.href = "/source/main.html";
+}
+
 
 textNavs.forEach(async(textNav) => {
     textNav.addEventListener('click', async function(event) {
