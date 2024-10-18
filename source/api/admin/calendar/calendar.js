@@ -12,6 +12,18 @@ async function fetchCalendar(year) {
     }
 }
 
+async function fetchCalendarById(id) {
+    try {
+        if(!id) return
+        const response = await fetch(`https://motogp.onrender.com/api/calendars/getById?id=${id}`);
+        const data = await response.json();
+        return data; // Return the fetched data (calendar)
+    } catch (e) {
+        console.log(e); // Handle errors
+        return undefined; // Or return a default value for error cases
+    }
+}
+
 async function updateCalendar(data) {
     try {
         const response = await fetch(`https://motogp.onrender.com/api/calendars/update`,{
@@ -77,4 +89,4 @@ async function deleteCalendar(id) {
     }
 }
 
-export {fetchCalendar, updateCalendar, deleteCalendar, addCalendar}
+export {fetchCalendar, updateCalendar, deleteCalendar, addCalendar, fetchCalendarById}

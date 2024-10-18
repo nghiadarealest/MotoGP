@@ -35,7 +35,7 @@ var fetchRider = (category) => {
             var name = e.name.split(' ')
 
 
-            body.innerHTML += `<a class="rider-list__rider ">
+            body.innerHTML += `<a class="rider-list__rider " id=${e._id} style="cursor: pointer">
                     <div class="rider-list__background">
                         <div class="rider-list__background-team-colour" style="background-color: ${e.teamId.color}"></div>
                         <div class="rider-list__background-name">${e.hashtag}</div>
@@ -66,6 +66,14 @@ var fetchRider = (category) => {
                     </div>
                 </a>`
         })
+
+        let riders =  document.querySelectorAll('.rider-list__rider');
+        riders.forEach((ri) => {
+            ri.addEventListener('click', () => {
+                    localStorage.setItem("riderId", ri.id);
+                    window.location.href = "/source//pages/detailRider.html";
+                 })
+            }) 
     })
     .catch(e => console.log(e))
 }

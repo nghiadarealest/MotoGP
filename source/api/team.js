@@ -34,7 +34,7 @@ var fetchTeam = (category) => {
 
         data.forEach((e, index) => {
 
-            body.innerHTML +=`<a class="teams-list__team">
+            body.innerHTML +=`<a class="teams-list__team" id=${e._id} style="cursor: pointer">
                     <div class="teams-list__background">
                         <div class="teams-list__background-team-colour" style="background-color:${e.color};"></div>
                         <div class="teams-list__background-name">${e.name}</div>
@@ -59,6 +59,13 @@ var fetchTeam = (category) => {
                     </div>
                 </a>`
         })
+        let teams =  document.querySelectorAll('.teams-list__team');
+        teams.forEach((te) => {
+            te.addEventListener('click', () => {
+                    localStorage.setItem("teamId", te.id);
+                    window.location.href = "/source//pages/detailTeam.html";
+                 })
+            }) 
     })
     .catch(e => console.log(e))
 }
